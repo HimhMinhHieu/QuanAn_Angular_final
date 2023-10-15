@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService, endpoints } from 'src/app/Config/api.service';
@@ -44,9 +44,11 @@ export class FormDatBanComponent implements OnInit {
         idNguoiDat: [{ value: this.user.firstName, disabled: true }, Validators.required],
         idChiNhanh: [{ value: this.idCN, disabled: true }, Validators.required],
         idBan: [{ value: this.idB, disabled: true }, Validators.required],
-        moTa: [, [Validators.required, Validators.email]],
+        moTa: [, [Validators.required]],
         ngayDat: [{ value: formattedDate, disabled: true }, Validators.required],
         ngayNhan: [, Validators.required]
+      }, {
+        validators: this.controlValueError('ngayDat', 'ngayNhan')
       });
       console.log(date)
     })
@@ -60,13 +62,25 @@ export class FormDatBanComponent implements OnInit {
       idNguoiDat: [{ value: this.user.firstName, disabled: true }, Validators.required],
       idChiNhanh: [{ value: this.idCN, disabled: true }, Validators.required],
       idBan: [{ value: this.idB, disabled: true }, Validators.required],
-      moTa: [, [Validators.required, Validators.email]],
+      moTa: [, [Validators.required]],
       ngayDat: [{ value: formattedDate, disabled: true }, Validators.required],
       ngayNhan: [, Validators.required]
-    });
+    },{
+      validators: this.controlValueError('ngayDat', 'ngayNhan')
+    } );
     console.log(date)
     // this.datBanForm.get('idChiNhanh')?.disable()
     // this.datBanForm.get('idBan')?.disable()
+  }
+
+  get mt()
+  {
+    return this.datBanForm.get('moTa')
+  }
+
+  get nn()
+  {
+    return this.datBanForm.get('ngayNhan')
   }
 
   datBan(event: Event) {
@@ -110,5 +124,20 @@ export class FormDatBanComponent implements OnInit {
 
     })
 
+  }
+
+  private controlValueError(controlNameA: string, controlNameB: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null =>  {
+      const formGroup = control as FormGroup
+      const valueOfControlA = formGroup.get(controlNameA)?.value
+      const valueOfControlB = formGroup.get(controlNameB)?.value
+
+      if (new Date(valueOfControlA) < new Date(valueOfControlB)) {
+        return null;
+      }else {
+        return {valuesError: true}
+      }
+
+    }
   }
 }

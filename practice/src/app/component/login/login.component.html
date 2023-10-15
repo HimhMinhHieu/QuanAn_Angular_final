@@ -12,14 +12,20 @@
                 <div class="form-floating mb-4">
                   <input type="text" id="username" class="form-control form-control-lg" formControlName="taiKhoan">
                   <label class="form-label" for="username">Username</label>
+                  <div  *ngIf="taiKhoan && taiKhoan.invalid && taiKhoan.touched">
+                    <small id="usernameError" class="form-text  text-danger">Username Required</small>
+                  </div>
                 </div>
-      
+
                 <!-- Password input -->
                 <div class="form-floating mb-4">
                   <input type="password" id="password" class="form-control form-control-lg" formControlName="matKhau" />
                   <label class="form-label" for="password">Password</label>
+                  <div  *ngIf="matKhau && matKhau.invalid && matKhau.touched">
+                    <small id="passwordError" class="form-text text-danger">Password Required</small>
+                  </div>
                 </div>
-      
+
                 <div class="d-flex justify-content-around align-items-center mb-4">
                   <!-- Checkbox -->
                   <div class="form-check">
@@ -28,9 +34,9 @@
                   </div>
                   <a [routerLink]="['/forgot']" routerLinkActive="router-link-active">Forgot password?</a>
                 </div>
-      
+
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Sign in</button>
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Sign in</button>
               </form>
                 <div class="divider d-flex align-items-center my-4">
                   <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
@@ -65,7 +71,7 @@
                     <p class="mb-0 me-2">Don't have an account?</p>
                     <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="btn btn-outline-primary" style="margin-left: 1px;">Create new</a>
                 </div>
-              
+
             </div>
           </div>
         </div>

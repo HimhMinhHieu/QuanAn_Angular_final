@@ -28,6 +28,11 @@ import { Page404Component } from './component/page404/page404.component';
 import { IntroduceComponent } from './component/introduce/introduce.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { ContactComponent } from './component/contact/contact.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './component/change-password/change-password.component';
+import { ThongTinCaNhanComponent } from './component/thong-tin-ca-nhan/thong-tin-ca-nhan.component';
+import { DanhGiaComponent } from './component/danh-gia/danh-gia.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -49,7 +54,11 @@ import { ContactComponent } from './component/contact/contact.component';
     Page404Component,
     IntroduceComponent,
     MenuComponent,
-    ContactComponent
+    ContactComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent,
+    ThongTinCaNhanComponent,
+    DanhGiaComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +67,7 @@ import { ContactComponent } from './component/contact/contact.component';
     HttpClientModule,
     StoreModule.forRoot({counter: CounterReducer})
     ],
-  providers: [CookieService, MyCartService],
+  providers: [CookieService, MyCartService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

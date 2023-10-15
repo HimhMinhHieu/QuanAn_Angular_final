@@ -79,6 +79,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/chonban',this.idBan, 'cartOff'])
   }
 
+  routeTo()
+  {
+    this.router.navigate([this.chiNhanh, 'comments'])
+  }
+
   // onScroll() {
   //   this.scrollY = window.scrollY;
 

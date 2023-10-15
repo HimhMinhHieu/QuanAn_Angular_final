@@ -89,8 +89,8 @@
                           {{user.firstName}}
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/detail']" routerLinkActive="router-link-active">Thông Tin Cá Nhân</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/changepw']" routerLinkActive="router-link-active">Đổi mật khẩu</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><button (click)="logout()" class="dropdown-item">ĐĂNG XUẤT</button></li>
                       </ul>
@@ -115,6 +115,10 @@
                 </li>
 
                 <li class="nav-item">
+                  <a class="nav-link nav-1" (click)="routeTo()">ĐÁNH GIÁ</a>
+                </li>
+
+                <li class="nav-item">
                   <a class="nav-link nav-1" [routerLink]="['/contact']" routerLinkActive="router-link-active" id="Eighth">LIÊN HỆ</a>
                 </li>
 
@@ -127,23 +131,23 @@
                 <!-- Icons -->
                 <ul class="navbar-nav d-flex flex-row Tenth ms-3">
                   <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                      target="_blank">
+                    <a class="nav-link" href="#" rel="nofollow"
+                      >
                       <i class="fab fa-youtube"></i>
                     </a>
                   </li>
                   <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
+                    <a class="nav-link" href="https://www.facebook.com/profile.php?id=100012229116926" rel="nofollow" target="_blank">
                       <i class="fab fa-facebook-f"></i>
                     </a>
                   </li>
                   <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
+                    <a class="nav-link" href="#" rel="nofollow">
                       <i class="fab fa-twitter"></i>
                     </a>
                   </li>
                   <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
+                    <a class="nav-link" href="https://github.com/HimhMinhHieu" rel="nofollow" target="_blank">
                       <i class="fab fa-github"></i>
                     </a>
                   </li>

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service';
@@ -12,7 +13,8 @@ export const endpoints = {
   login: `${SERVER}${SERVER_CONTEXT}/api/login/`,
   register: `${SERVER}${SERVER_CONTEXT}/api/dangky/`,
   chiNhanh: (idChiNhanh: any) => `${SERVER}${SERVER_CONTEXT}/api/ban/${idChiNhanh}/`,
-  ban: (idBan: any) => `${SERVER}${SERVER_CONTEXT}/api/thongtinban/${idBan}/`
+  ban: (idBan: any) => `${SERVER}${SERVER_CONTEXT}/api/thongtinban/${idBan}/`,
+  forgotPass: `${SERVER}${SERVER_CONTEXT}/api/quenmatkhau/`
 };
 
 @Injectable({
@@ -42,6 +44,11 @@ export class ApiService {
 
   post(endpoint: string, body: any) {
     return this.http.post(endpoint, body);
+  }
+
+  forgot(endpoint: string, body: any)
+  {
+    return this.http.post(endpoint, body, {responseType: 'text', observe: 'response'});
   }
 
   login(endpoint: string, body: any) {

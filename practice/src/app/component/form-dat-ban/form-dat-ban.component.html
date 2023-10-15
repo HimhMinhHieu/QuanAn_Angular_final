@@ -40,6 +40,9 @@
               <div class="form-floating mb-4">
                 <input type="text" id="note" class="form-control form-control-lg" formControlName=moTa/>
                 <label class="form-label" for="note">Ghi Chú</label>
+                <div  *ngIf="mt && mt.invalid && mt.touched">
+                  <small id="moTaError" class="form-text  text-danger">Ghi Chú Required, Nếu Không có Ghi Không</small>
+                </div>
               </div>
                <div class="form-floating mb-4">
                 <input type="datetime" id="date" class="form-control form-control-lg" formControlName=ngayDat/>
@@ -48,10 +51,16 @@
               <div class="form-floating mb-4">
                 <input type="date" id="dateRec" class="form-control form-control-lg" formControlName=ngayNhan/>
                 <label class="form-label" for="dateRec">Ngày Hứa Nhận</label>
+                <div  *ngIf="nn && nn.invalid && nn.touched">
+                  <small id="DateNhanError" class="form-text  text-danger">Vui Lòng Chọn Ngày</small>
+                </div>
+                <div  *ngIf="datBanForm.errors?.['valuesError']">
+                  <small id="DateNhanErrorSmaller" class="form-text  text-danger">Không được chọn nhỏ hơn ngày đặt</small>
+                </div>
               </div>
 
               <!-- Submit button -->
-              <button type="submit" [disabled]="loading" class="btn btn-primary btn-lg btn-block" style="width: 100%;">
+              <button type="submit" [disabled]="loading || datBanForm.invalid" class="btn btn-primary btn-lg btn-block" style="width: 100%;">
                 <ng-container *ngIf="loading">
                   <app-my-spinner />
                 </ng-container>
