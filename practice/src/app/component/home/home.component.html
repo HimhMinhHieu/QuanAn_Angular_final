@@ -1,0 +1,100 @@
+<!--Main layout-->
+<ng-container *ngIf="user.vaiTro === 'ban'">
+  <app-chon-ban />
+</ng-container>
+<ng-container *ngIf="user.vaiTro !== 'ban'">
+
+
+<main class="mt-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section>
+        <div class="row">
+          <h4 class="mb-5 text-center"><strong>GIỚI THIỆU</strong>
+            <hr class="hr hr-blurry" />
+          </h4>
+          <div class="col-md-6 gx-5 mb-4">
+            <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+              <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-6 gx-5 mb-4">
+            <h4><strong>QUÁN ĂN NHOAM NHOAM</strong></h4>
+            <p class="text-muted">
+             Là quán ăn chuyên cung cấp văn hóa ẩm thực Việt Nam nói riêng, văn hóa ẩm thực thế giới nói chung. Chúng tôi cũng cung cấp ẩm thực Việt Nam nói riêng và ẩm thực thế giới nói chung
+            </p>
+            <p><strong>HỆ THỐNG QUÁN ĂN TIỆN LỢI, KHÔNG GIAN THOẢI MÁI</strong></p>
+            <p class="text-muted">
+              Hệ thống bao gồm một cơ sở dữ liệu rõ ràng, quản lý hệ thống chặt chẽ, cung cấp các giao diện tiện ích – thoải mái – thân thiện cho người dung có thể sử dụng cũng như một hệ thống bảo mật tốt để người dùng có thể đăng ký- đăng nhập ứng dụng sử dụng các dịch vụ của hệ thống quán ăn một cách yên tâm và tin cậy nhất
+            </p>
+          </div>
+        </div>
+      </section>
+      <!--Section: Content-->
+
+      <hr class="my-5" />
+
+      <!--Section: Content-->
+      <section class="text-center">
+        <h4 class="mb-5"><strong>MENU</strong>
+          <hr class="hr hr-blurry" />
+        </h4>
+        <!-- <div class="row justify-content-center" >
+          <div class="col " *ngFor="let c of cates">
+            <button class="btn btn-outline-dark">{{c.name}}</button>
+          </div>
+          <hr class="hr hr-blurry mt-5" />
+        </div> -->
+        <ng-container *ngIf="loading">
+          <app-my-spinner />
+        </ng-container>
+        <ng-container *ngIf="!loading">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4" *ngFor="let f of foods">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img
+                  src={{f.image}}
+                  class="img-fluid w-50 h-50"
+                />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{f.name}}</h5>
+                <p class="card-text">
+                  {{f.price}}
+                </p>
+                <button (click)="addCart(f)" class="btn btn-primary">Đặt món</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </ng-container>
+      </section>
+      <!--Section: Content-->
+
+      <hr class="my-5" />
+
+      <!--Section: Content-->
+      <!-- <section class="mb-5">
+        <h4 class="mb-5 text-center"><strong>Contact Us:</strong></h4>
+
+        <div class="row d-flex justify-content-center">
+          <h5>SỐ ĐIỆN THOẠI: 0787940318</h5>
+          <h5>TÊN: TRỊNH MINH HIẾU</h5>
+          <h5>CHI NHÁNH 4</h5>
+          <h5>ĐỊA CHỈ: ABCXYZ</h5>
+        </div>
+      </section> -->
+      <!--Section: Content-->
+    </div>
+  </main>
+</ng-container>
+  <!--Main layout-->

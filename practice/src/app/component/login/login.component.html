@@ -1,0 +1,73 @@
+<div class="card d-flex justify-content-around align-items-center mb-4" style="width: 65%; height: 70vh; text-align: center; margin: 5rem 2rem 2rem 15rem;">
+    <section>
+        <div class="container py-5 h-100">
+          <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                class="img-fluid" alt="Phone image">
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+              <form [formGroup]="loginForm" (submit)="onSubmit()">
+                <!-- Username input -->
+                <div class="form-floating mb-4">
+                  <input type="text" id="username" class="form-control form-control-lg" formControlName="taiKhoan">
+                  <label class="form-label" for="username">Username</label>
+                </div>
+      
+                <!-- Password input -->
+                <div class="form-floating mb-4">
+                  <input type="password" id="password" class="form-control form-control-lg" formControlName="matKhau" />
+                  <label class="form-label" for="password">Password</label>
+                </div>
+      
+                <div class="d-flex justify-content-around align-items-center mb-4">
+                  <!-- Checkbox -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                    <label class="form-check-label" for="form1Example3"> Remember me </label>
+                  </div>
+                  <a [routerLink]="['/forgot']" routerLinkActive="router-link-active">Forgot password?</a>
+                </div>
+      
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block" style="width: 100%;">Sign in</button>
+              </form>
+                <div class="divider d-flex align-items-center my-4">
+                  <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                </div>
+                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                    <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                    <!-- Facebook -->
+                    <div style="text-align: center, justify; margin-left: 6.1rem;">
+                        <a style="color: #3b5998;" href="#!" role="button"
+                        ><i class="fab fa-facebook-f fa-lg mx-3"></i
+                        ></a>
+
+                        <!-- Twitter -->
+                        <a style="color: #55acee;" href="#!" role="button"
+                        ><i class="fab fa-twitter fa-lg mx-3"></i
+                        ></a>
+
+                        <!-- Google -->
+                        <a style="color: #dd4b39;" href="#!" role="button"
+                        ><i class="fab fa-google fa-lg mx-3"></i
+                        ></a>
+
+                        <!-- Instagram -->
+                        <a style="color: #ac2bac;" href="#!" role="button"
+                        ><i class="fab fa-instagram fa-lg mx-3"></i
+                        ></a>
+                    </div>
+                </div>
+                <div class="divider d-flex align-items-center my-4">
+                </div>
+                <div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="mb-0 me-2">Don't have an account?</p>
+                    <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="btn btn-outline-primary" style="margin-left: 1px;">Create new</a>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
