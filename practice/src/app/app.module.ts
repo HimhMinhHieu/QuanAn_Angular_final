@@ -33,6 +33,7 @@ import { ChangePasswordComponent } from './component/change-password/change-pass
 import { ThongTinCaNhanComponent } from './component/thong-tin-ca-nhan/thong-tin-ca-nhan.component';
 import { DanhGiaComponent } from './component/danh-gia/danh-gia.component';
 import { DatePipe } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { DatePipe } from '@angular/common';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({counter: CounterReducer})
+    StoreModule.forRoot({counter: CounterReducer}),
+    NgxPaginationModule
     ],
   providers: [CookieService, MyCartService, DatePipe],
   bootstrap: [AppComponent]

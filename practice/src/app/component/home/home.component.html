@@ -54,7 +54,7 @@
         </ng-container>
         <ng-container *ngIf="!loading">
         <div class="row">
-          <div class="col-lg-4 col-md-12 mb-4" *ngFor="let f of foods">
+          <div class="col-lg-4 col-md-12 mb-4" *ngFor="let f of foods | paginate: { itemsPerPage: 4, currentPage: p }">
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                 <img
@@ -76,6 +76,7 @@
           </div>
 
         </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </ng-container>
       </section>
       <!--Section: Content-->

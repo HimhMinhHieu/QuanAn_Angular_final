@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   user:any = [];
   count:number = 1;
   loading!: any
+   p:number = 1
+   itemPerPage: number = 4
+  totalProduct!: any
   private carts: any = {};
   constructor(private apis: ApiService,
      private cookie: CookieService,
@@ -30,6 +33,7 @@ export class HomeComponent implements OnInit {
     this.apis.get(endpoints.foods).subscribe((data) => {
       this.foods = data
       this.loading = false
+      // this.totalProduct = data.length;
     })
     if(this.cookie.check('user') === true){
       this.user = JSON.parse(this.cookie.get('user'))
