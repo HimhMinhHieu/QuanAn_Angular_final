@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { AuthApiService, endpointsAuth } from 'src/app/Config/auth-api.service';
-import { decrement, update } from 'src/app/Reducer/MyCartCounterReducer/counter.actions';
+import { decrement, update } from 'src/app/Reducer/MyCartCounterState/counter.actions';
 import { MyCartService } from 'src/app/Service/my-cart.service';
 import Swal from 'sweetalert2';
 
@@ -55,10 +55,10 @@ export class CartComponent implements OnInit {
     }
   }
 
-  update(){
+  update(value: any){
     this.cookie.set('cart', this.carts);
     let s = Object.values(this.carts).reduce((init:any, current: any) => init + current['soLuong'], 0)
-    this.store.dispatch(update({ payload: s}))
+    this.store.dispatch(update({ payload: value}))
     console.log(s)
   }
 

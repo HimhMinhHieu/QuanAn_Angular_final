@@ -1,13 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Practice</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Practice</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <app-root></app-root>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script>
+      window.botpressWebChat.init({
+        composerPlaceholder: "Talk with me",
+        botConversationDescription: "Chat Bot",
+        botId: "8dc2a325-da4a-46a2-abfd-f1684be0f31a",
+        hostUrl: "https://cdn.botpress.cloud/webchat/v1",
+        messagingUrl: "https://messaging.botpress.cloud",
+        clientId: "8dc2a325-da4a-46a2-abfd-f1684be0f31a",
+        webhookId: "b2a45a11-ca39-45e6-a492-cf6a390a7133",
+        lazySocket: true,
+        themeName: "prism",
+        botName: "Nhoam Nhoam Bot",
+        stylesheet:
+          "https://webchat-styler-css.botpress.app/prod/61e09ca5-3255-4f78-bc97-0991542d3929/v78405/style.css",
+        frontendVersion: "v1",
+        showPoweredBy: true,
+        theme: "prism",
+        themeColor: "#2563eb",
+        useSessionStorage: true,
+        showTimestamp: true,
+      });
+    </script>
+  </body>
 </html>

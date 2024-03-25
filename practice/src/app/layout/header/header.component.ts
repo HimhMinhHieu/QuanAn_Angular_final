@@ -1,10 +1,15 @@
+import { authUserSelector } from './../../Reducer/MyUserState/auth.selectors';
 import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import introJs from 'intro.js';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
 import { AuthApiService, endpointsAuth } from 'src/app/Config/auth-api.service';
-import { logout } from 'src/app/Reducer/MyUserReducer/state.action';
+import { getUser } from 'src/app/Reducer/MyAuthState/user.selectors';
+import { getCounter } from 'src/app/Reducer/MyCartCounterState/counter.selectors';
+import { logoutState } from 'src/app/Reducer/MyUserState/auth.actions';
+import { logout } from 'src/app/Reducer/MyUserState/state.action';
 import { MyCartService } from 'src/app/Service/my-cart.service';
 import { MyUserService } from 'src/app/Service/my-user.service';
 
@@ -29,36 +34,38 @@ export interface User {
 export class HeaderComponent implements OnInit {
   @Input() u!:any;
   public user:any = [] || null;
-  public hUser:any;
+  hUser:any = this.cookie.check('user')
   carts: any = {}
   chiNhanh:any = 4
   idBan!: any
+  user$ = this.storeU.select(authUserSelector)
+  headauth !: any
+  count$ !: Observable<any>
   constructor(
     private cookie:CookieService,
     private store:Store<{counter: {counter: number}}>,
+    private storeU: Store<{authUser: {user: any}}>,
     private router: Router,
     private route: ActivatedRoute
-    ) {}
+    ) { }
   counterdisplay!: any;
   navStyle = "background-color:none;"
   ngOnInit(): void {
     let id = parseInt(this.route.snapshot.paramMap.get('idBan') as any)
     this.idBan = id
     console.log(this.idBan)
+    console.log(this.user$)
+    this.store.select(getCounter).subscribe(data => this.counterdisplay = data)
     if(this.cookie.check('user') === true){
       this.user = this.u;
       console.log(this.user)
     }else
-
-    this.hUser = this.cookie.check('user')
-
-
-      this.store.select('counter').subscribe(data => {
-        // data.counter = this.cartService.countCart()
-        this.counterdisplay = data.counter
-      })
-      console.log(this.cookie.check('cart'))
-
+    console.log(this.cookie.get('user'))
+      // this.store.select('counter').subscribe(data => {
+      //   // data.counter = this.cartService.countCart()
+      //   this.counterdisplay = data.counter
+      // })
+      // console.log(this.cookie.check('cart'))
     // this.store.select('user').subscribe(data => {
 
     // })
@@ -67,7 +74,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.cookie.deleteAll('/')
-    this.store.dispatch(logout({payload: null}));
+    // this.store.dispatch(logout({payload: null}));
+    this.storeU.dispatch(logoutState());
   }
 
   DatBan() {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 
 const SERVER_CONTEXT = "/quanan";
@@ -18,7 +19,7 @@ export const endpoints = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
 
@@ -52,7 +53,9 @@ export class ApiService {
   }
 
   login(endpoint: string, body: any) {
-    return this.http.post(endpoint, body, {responseType: 'text'});
+    return this.http.post(endpoint, body, {
+      responseType: 'text'
+    }).pipe(catchError(this.getErrorHandler));
   }
 
   put(endpoint: string, body: any) {
@@ -61,5 +64,20 @@ export class ApiService {
 
   delete(endpoint: string) {
     return this.http.delete(endpoint);
+  }
+
+  getErrorHandler(error: HttpErrorResponse){
+    let messageError = 'Something wrong'
+    switch(error.status) {
+      case 400:
+        Swal.fire({
+          icon: 'error',
+          title: 'SAI THÔNG TIN TÀI KHOẢN HOẶC MẬT KHẨU.',
+          text: 'Xin vui lòng nhập lại thông tin tài khoản và mật khẩu !'
+        })
+        messageError = 'INVALID'
+        break;
+    }
+    return throwError(() => new Error(messageError));
   }
 }

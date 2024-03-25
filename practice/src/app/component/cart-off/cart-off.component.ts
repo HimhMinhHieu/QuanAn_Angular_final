@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthApiService, endpointsAuth } from 'src/app/Config/auth-api.service';
-import { decrement, update } from 'src/app/Reducer/MyCartCounterReducer/counter.actions';
+import { decrement, update } from 'src/app/Reducer/MyCartCounterState/counter.actions';
 import { MyCartService } from 'src/app/Service/my-cart.service';
 import Swal from 'sweetalert2';
 

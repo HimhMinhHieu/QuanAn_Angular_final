@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService, endpoints } from 'src/app/Config/api.service';
-import { increment } from 'src/app/Reducer/MyCartCounterReducer/counter.actions';
+import { increment } from 'src/app/Reducer/MyCartCounterState/counter.actions';
 import { MyCartService } from 'src/app/Service/my-cart.service';
 
 @Component({

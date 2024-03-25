@@ -17,6 +17,7 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
 import { ChangePasswordComponent } from './component/change-password/change-password.component';
 import { ThongTinCaNhanComponent } from './component/thong-tin-ca-nhan/thong-tin-ca-nhan.component';
 import { DanhGiaComponent } from './component/danh-gia/danh-gia.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'changepw', component: ChangePasswordComponent},
   {path: 'detail', component: ThongTinCaNhanComponent},
   {path: ':storeId/comments', component: DanhGiaComponent},
+  {path: 'chatbot', component: ChatbotComponent},
   {path: '**', component: Page404Component}
 ];
 

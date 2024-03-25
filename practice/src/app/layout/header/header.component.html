@@ -60,7 +60,7 @@
         </nav>
 
 
-        <nav *ngIf="user.vaiTro !== 'ban'" class="navbar bg-dark navbar-expand-lg navbar-dark d-none d-lg-block navbar fixed-top" style="z-index: 2000;" id="First">
+        <nav *ngIf="user.vaiTro !== 'ban'" class="navbar bg-dark navbar-expand-lg navbar-dark d-none d-lg-block navbar" style="z-index: 2000;" id="First">
           <div class="container-fluid">
             <!-- Navbar brand -->
             <a class="navbar-brand nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">
@@ -78,15 +78,19 @@
                   <li class="nav-item">
                     <a class="nav-link nav-1" [routerLink]="['/introduce']" routerLinkActive="router-link-active" data-title="Second" id="Second">GIỚI THIỆU</a>
                   </li>
-                      <li *ngIf="hUser === false" class="nav-item">
+                      <li *ngIf="(user$ | async)?.isLogged === false" class="nav-item">
                           <a class="nav-link nav-1" [routerLink]="['/login']" routerLinkActive="router-link-active" id="Third">ĐĂNG NHẬP</a>
+
                       </li>
-                      <li *ngIf="hUser === false" class="nav-item">
-                      <a class="nav-link nav-1" [routerLink]="['/register']" routerLinkActive="router-link-active" id="Forth">ĐĂNG KÝ</a>
+                      <li *ngIf="(user$ | async)?.isLogged === false" class="nav-item">
+                      <a  class="nav-link nav-1" [routerLink]="['/register']" routerLinkActive="router-link-active" id="Forth">ĐĂNG KÝ</a>
+                      <!-- <a class="nav-link nav-1" [routerLink]="['/register']" routerLinkActive="router-link-active" id="Forth">{{(user$ | async)?.user.firstName}}</a>
+                      <a class="nav-link nav-1" [routerLink]="['/register']" routerLinkActive="router-link-active" id="Forth">{{(user$ | async)}}</a>
+                      <a class="nav-link nav-1" [routerLink]="['/register']" routerLinkActive="router-link-active" id="Forth">{{!(user$ | async)}}</a> -->
                       </li>
-                  <li *ngIf="hUser === true || hUser === undefined" class="nav-item dropdown">
+                  <li *ngIf="(user$ | async)?.isLogged === true" class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle nav-1" href="#" id="Third" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          {{user.firstName}}
+                        {{(user$ | async)?.user.firstName}}
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" [routerLink]="['/detail']" routerLinkActive="router-link-active">Thông Tin Cá Nhân</a></li>

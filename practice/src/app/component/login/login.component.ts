@@ -5,7 +5,8 @@ import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService, endpoints } from 'src/app/Config/api.service';
 import { AuthApiService, endpointsAuth } from 'src/app/Config/auth-api.service';
-import { login } from 'src/app/Reducer/MyUserReducer/state.action';
+import { login } from 'src/app/Reducer/MyAuthState/user.actions';
+import { loginState } from 'src/app/Reducer/MyUserState/auth.actions';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -32,12 +33,13 @@ export class LoginComponent {
       try{
         this.apis.login(endpoints.login, this.loginForm.value).subscribe((data) => {
             this.cookie.set('token', data.toString())
+            // this.store.dispatch(login({token: data.toString()}))
             this.authApi.get(endpointsAuth.currentUser).subscribe((data) => {
               this.cookie.set('user', JSON.stringify(data))
-              this.store.dispatch(login({payload: data}))
+              this.store.dispatch(loginState.login({user: data}))
+
               console.log(this.cookie.check('user'))
-              if(this.cookie.check('user') === true)
-              {
+
                 Swal.fire({
                   icon: 'success',
                   title: 'Congratulations',
@@ -49,21 +51,7 @@ export class LoginComponent {
                     this.router.navigate(['/']);
                   }
                 })
-              } else
-              {
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Xin lỗi bạn...',
-                  text: 'Đã có lỗi xảy ra xin hãy thử lại'
-                }).then((result) =>{
-                  if(result.isConfirmed)
-                  {
-                    this.router.navigate(['/login']);
-                  }
-                })
-              }
             })
-
         })
 
         // if(this.cookie.check('user') === true)
