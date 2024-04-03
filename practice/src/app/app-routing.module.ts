@@ -18,6 +18,7 @@ import { ChangePasswordComponent } from './component/change-password/change-pass
 import { ThongTinCaNhanComponent } from './component/thong-tin-ca-nhan/thong-tin-ca-nhan.component';
 import { DanhGiaComponent } from './component/danh-gia/danh-gia.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { FoodDetailComponent } from './food-detail/food-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'cartoff', component: CartOffComponent},
   {path: 'introduce', component: IntroduceComponent},
   {path: 'menu', component: MenuComponent},
+  {path: 'menu/:idFood', component: FoodDetailComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'forgot', component: ForgotPasswordComponent},
   {path: 'changepw', component: ChangePasswordComponent},

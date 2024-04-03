@@ -86,7 +86,7 @@ export class SignupComponent {
           Swal.fire({
             icon: 'success',
             title: 'Congratulations',
-            text: 'Chúc mừng bạn đã đăng nhập thành công',
+            text: 'Chúc mừng bạn đã đăng ký thành công',
           }).then((result) => {
             if(result.isConfirmed)
             {

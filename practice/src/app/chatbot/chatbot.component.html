@@ -3,91 +3,10 @@
   <head>
     <title>Botpress in a div</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        color: white;
-        background-color: #000000;
-        font-family: Arial, sans-serif;
-      }
-
-      .center-div {
-        width: 50vw;
-        height: 80vh;
-        background-color: rgb(102, 71, 255);
-        border-radius: 15px;
-        padding: 5px;
-        box-sizing: border-box;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
-
-      @media only screen and (max-width: 600px) {
-        .center-div {
-          height: 40vh;
-          width: 80vw;
-          background-color: rgb(102, 71, 255);
-          border-radius: 15px;
-          padding: 5px;
-          box-sizing: border-box;
-          color: white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-        }
-      }
-    </style>
+    <meta name="google-signin-client_id" content="708090744448-i1iao1kj4sqj27ktlbt5f9k9aqh3sa3l.apps.googleusercontent.com">
   </head>
 
   <body>
-    <div>
-      <p style="text-align: center;">Botpress Chatbot in a <span><</span><span>div></span></p>
-      <div class="absolute inset-4 ">
-        <div
-          class="center-div relative h-full w-full overflow-clip rounded-md border border-zinc-200 bg-white p-2 px-0 py-0"
-        >
-          <iframe
-            style="border: none;"
-            srcdoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
-            <script>
-              window.botpressWebChat.init({
-                  'composerPlaceholder': 'Talk to me',
-                  'botConversationDescription': 'Enjoy your time',
-                  'botName': 'Nhoam-Nhoam',
-                  'botId': '7955f4df-9977-476d-9ef5-2a79800d8798',
-                  'hostUrl': 'https://cdn.botpress.cloud/webchat/v0',
-                  'messagingUrl': 'https://messaging.botpress.cloud',
-                  'clientId': '7955f4df-9977-476d-9ef5-2a79800d8798',
-                  'enableConversationDeletion': true,
-                  'showPoweredBy': true,
-                  'className': 'webchatIframe',
-                  'containerWidth': '100%25',
-                  'layoutWidth': '100%25',
-                  'hideWidget': true,
-                  'showCloseButton': false,
-                  'disableAnimations': true,
-                  'closeOnEscape': false,
-                  'showConversationsButton': false,
-                  'enableTranscriptDownload': false,
-                  'stylesheet':'https://webchat-styler-css.botpress.app/prod/61e09ca5-3255-4f78-bc97-0991542d3929/v50564/style.css'
-
-              });
-            window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
-            </script></body>"
-            width="100%"
-            height="100%"
-          ></iframe>
-        </div>
-      </div>
-    </div>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
   </body>
 </html>

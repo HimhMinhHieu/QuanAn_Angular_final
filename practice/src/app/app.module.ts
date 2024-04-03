@@ -40,8 +40,15 @@ import { AuthEffect } from './Reducer/MyUserState/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { metaReducers, reducers } from './Reducer/Global';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  GoogleSigninButtonModule,
+  FacebookLoginProvider,
+} from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { FoodDetailComponent } from './food-detail/food-detail.component';
 // import { metaReducers, reducers } from './Reducer/Global';
-
 
 @NgModule({
   declarations: [
@@ -67,7 +74,8 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     ChangePasswordComponent,
     ThongTinCaNhanComponent,
     DanhGiaComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    FoodDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,12 +83,44 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     ReactiveFormsModule,
     HttpClientModule,
     // StoreModule.forRoot({counter: CounterReducer, auth: authReducer}),
-    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreModule.forRoot(reducers, { metaReducers }),
     NgxPaginationModule,
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([AuthEffect]),
-    ],
-  providers: [CookieService, MyCartService, DatePipe, MyUserService],
-  bootstrap: [AppComponent]
+    SocialLoginModule,
+    GoogleSigninButtonModule,
+  ],
+  providers: [
+    CookieService,
+    MyCartService,
+    DatePipe,
+    MyUserService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '708090744448-i1iao1kj4sqj27ktlbt5f9k9aqh3sa3l.apps.googleusercontent.com',
+              {
+                oneTapEnabled: false,
+                prompt: 'consent',
+              }
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('1464142041188880'),
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        },
+      } as SocialAuthServiceConfig,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

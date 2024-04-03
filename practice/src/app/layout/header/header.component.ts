@@ -1,3 +1,4 @@
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { authUserSelector } from './../../Reducer/MyUserState/auth.selectors';
 import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -46,7 +47,8 @@ export class HeaderComponent implements OnInit {
     private store:Store<{counter: {counter: number}}>,
     private storeU: Store<{authUser: {user: any}}>,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: SocialAuthService
     ) { }
   counterdisplay!: any;
   navStyle = "background-color:none;"
@@ -73,9 +75,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.authService.signOut()
     this.cookie.deleteAll('/')
     // this.store.dispatch(logout({payload: null}));
     this.storeU.dispatch(logoutState());
+    this.router.navigate(['/']);
   }
 
   DatBan() {
@@ -140,7 +144,7 @@ export class HeaderComponent implements OnInit {
           intro: '<div class="text-center">Nếu bạn là một khách hàng quan tâm sâu sắc đến quán và bạn muốn đăng ký làm hội viên để cập nhật tin tức của quán thì bạn có thể đăng ký ở đây</div>',
         },
         {
-          element: '#Fifth',
+          element: '.Fifth',
           intro: '<div class="text-center">Giỏ Hàng là nơi bạn đã đặt món online</div>',
           title: 'Giỏ Hàng',
         },

@@ -11,11 +11,13 @@ const SERVER = "http://localhost:8080";
 
 export const endpoints = {
   foods: `${SERVER}${SERVER_CONTEXT}/api/food/`,
+  food_detail: (idFood: any) => `${SERVER}${SERVER_CONTEXT}/api/food/${idFood}/`,
   login: `${SERVER}${SERVER_CONTEXT}/api/login/`,
   register: `${SERVER}${SERVER_CONTEXT}/api/dangky/`,
   chiNhanh: (idChiNhanh: any) => `${SERVER}${SERVER_CONTEXT}/api/ban/${idChiNhanh}/`,
   ban: (idBan: any) => `${SERVER}${SERVER_CONTEXT}/api/thongtinban/${idBan}/`,
-  forgotPass: `${SERVER}${SERVER_CONTEXT}/api/quenmatkhau/`
+  forgotPass: `${SERVER}${SERVER_CONTEXT}/api/quenmatkhau/`,
+  googleSignIn: `${SERVER}${SERVER_CONTEXT}/api/login/google/`
 };
 
 @Injectable({
@@ -44,7 +46,9 @@ export class ApiService {
   }
 
   post(endpoint: string, body: any) {
-    return this.http.post(endpoint, body);
+    return this.http.post(endpoint, body, {
+      responseType: 'text'
+    });
   }
 
   forgot(endpoint: string, body: any)
