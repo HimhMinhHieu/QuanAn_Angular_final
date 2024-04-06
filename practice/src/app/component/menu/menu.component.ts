@@ -23,12 +23,16 @@ export class MenuComponent implements OnInit {
     ){
 
   }
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.loading = true
-    this.apis.get(endpoints.foods).subscribe((data) => {
-      this.foods = data
-      this.loading = false
-    })
+    // this.apis.get(endpoints.foods).subscribe((data) => {
+    //   this.foods = data
+    //   this.loading = false
+    // })
+    let data = await this.apis.getFood(endpoints.foods)
+    this.foods = data
+    if(this.foods !== null) this.loading = false
+    if(this.foods === null) this.loading = true
     if(this.cookie.check('user') === true){
       this.user = JSON.parse(this.cookie.get('user'))
     }

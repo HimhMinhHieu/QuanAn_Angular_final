@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service';
-import { catchError, throwError } from 'rxjs';
+import { catchError, lastValueFrom, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 
 
@@ -43,6 +43,17 @@ export class ApiService {
 
   get(endpoint: string) {
     return this.http.get(endpoint)
+  }
+
+  async getFood(endpoint: string) {
+    try {
+      return await lastValueFrom(
+        this.http.get(endpoint)
+      );
+    } catch(e) {
+      console.log(e)
+      return null;
+    }
   }
 
   post(endpoint: string, body: any) {

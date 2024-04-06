@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
-
-const SERVER_CONTEXT = "/quanan";
-const SERVER = "http://localhost:8080";
+const SERVER_CONTEXT = '/quanan';
+const SERVER = 'http://localhost:8080';
 
 export const endpointsAuth = {
   currentUser: `${SERVER}${SERVER_CONTEXT}/api/current-user/`,
@@ -12,48 +11,60 @@ export const endpointsAuth = {
   datban: `${SERVER}${SERVER_CONTEXT}/api/datban/`,
   payOff: `${SERVER}${SERVER_CONTEXT}/api/payoffline/`,
   changePassword: `${SERVER}${SERVER_CONTEXT}/api/doimatkhau/`,
-  comments: (storeId: any) =>  `${SERVER}${SERVER_CONTEXT}/api/stores/${storeId}/comments/`,
-  addcomment: `${SERVER}${SERVER_CONTEXT}/api/comments/`
+  comments: (storeId: any) =>
+    `${SERVER}${SERVER_CONTEXT}/api/stores/${storeId}/comments/`,
+  addcomment: `${SERVER}${SERVER_CONTEXT}/api/comments/`,
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class AuthApiService {
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   get(endpoint: string) {
     return this.http.get(endpoint, {
-
-      headers: {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         Authorization: this.cookieService.get('token'),
-      },
-    })
+      }),
+    });
   }
 
   post(endpoint: string, body: any) {
     return this.http.post(endpoint, body, {
       observe: 'response',
-      headers: {
+      // headers: {
+      //   Authorization: this.cookieService.get('token'),
+      // },
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         Authorization: this.cookieService.get('token'),
-      },
+      }),
     });
   }
 
   put(endpoint: string, body: any) {
     return this.http.put(endpoint, body, {
-      headers: {
+      // headers: {
+      //   Authorization: this.cookieService.get('token'),
+      // },
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         Authorization: this.cookieService.get('token'),
-      },
+      }),
     });
   }
 
   delete(endpoint: string) {
     return this.http.delete(endpoint, {
-      headers: {
+      // headers: {
+      //   Authorization: this.cookieService.get('token'),
+      // },
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         Authorization: this.cookieService.get('token'),
-      },
+      }),
     });
   }
 }

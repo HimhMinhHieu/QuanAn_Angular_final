@@ -13,6 +13,7 @@ import { logoutState } from 'src/app/Reducer/MyUserState/auth.actions';
 import { logout } from 'src/app/Reducer/MyUserState/state.action';
 import { MyCartService } from 'src/app/Service/my-cart.service';
 import { MyUserService } from 'src/app/Service/my-user.service';
+import { update } from 'src/app/Reducer/MyCartCounterState/counter.actions';
 
 export interface User {
   id: number,
@@ -75,8 +76,27 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.signOut()
+    if (this.cookie.check('user') === true) {
+      this.authService.authState.subscribe({
+        next: (result) => {
+          console.log(result);
+          console.log(JSON.stringify(this.user));
+          if (result !== null) {
+            try {
+              this.authService.signOut()
+            } catch (error) {
+              console.log(error);
+            }
+          } else throw Error
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
+    }
+
     this.cookie.deleteAll('/')
+    this.store.dispatch(update({payload: 0}))
     // this.store.dispatch(logout({payload: null}));
     this.storeU.dispatch(logoutState());
     this.router.navigate(['/']);
