@@ -80,6 +80,7 @@ export class SignupComponent {
       formData.append('avatar', this.avatar);
     }
 
+    console.log(formData)
     this.Apis.post(endpoints.register, formData)
       .subscribe(
         (response) => {

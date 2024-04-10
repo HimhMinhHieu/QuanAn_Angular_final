@@ -1,5 +1,5 @@
 import { NgModule, Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { SignupComponent } from './component/signup/signup.component';
@@ -19,6 +19,8 @@ import { ThongTinCaNhanComponent } from './component/thong-tin-ca-nhan/thong-tin
 import { DanhGiaComponent } from './component/danh-gia/danh-gia.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
+import { OwnerComponent } from './component/owner/owner.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -40,11 +42,20 @@ const routes: Routes = [
   {path: 'detail', component: ThongTinCaNhanComponent},
   {path: ':storeId/comments', component: DanhGiaComponent},
   {path: 'chatbot', component: ChatbotComponent},
-  {path: '**', component: Page404Component}
+  {path: 'owner', component: OwnerComponent},
+  {path: '**', component: Page404Component},
 ];
 
+const routerOptions: ExtraOptions = {
+  useHash: false,
+  anchorScrolling: 'enabled',
+  onSameUrlNavigation: 'reload'
+  // ...any other options you'd like to use
+};
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes,  routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

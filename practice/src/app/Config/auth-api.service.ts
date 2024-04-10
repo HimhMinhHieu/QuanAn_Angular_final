@@ -14,6 +14,9 @@ export const endpointsAuth = {
   comments: (storeId: any) =>
     `${SERVER}${SERVER_CONTEXT}/api/stores/${storeId}/comments/`,
   addcomment: `${SERVER}${SERVER_CONTEXT}/api/comments/`,
+  addFood: `${SERVER}${SERVER_CONTEXT}/api/food/addfood/`,
+  deleteFood: (idFood: any) => `${SERVER}${SERVER_CONTEXT}/api/food/delete/${idFood}/`,
+  patchFood: (idFood: any) => `${SERVER}${SERVER_CONTEXT}/api/food/patch/${idFood}/`,
 };
 
 @Injectable({
@@ -39,6 +42,18 @@ export class AuthApiService {
       // },
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+        Authorization: this.cookieService.get('token'),
+      }),
+    });
+  }
+
+  patch(endpoint: string, body: any) {
+    return this.http.patch(endpoint, body, {
+      // headers: {
+      //   Authorization: this.cookieService.get('token'),
+      // },
+      headers: new HttpHeaders({
+        // 'Content-Type': 'application/json',
         Authorization: this.cookieService.get('token'),
       }),
     });

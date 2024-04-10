@@ -12,12 +12,14 @@ const SERVER = "http://localhost:8080";
 export const endpoints = {
   foods: `${SERVER}${SERVER_CONTEXT}/api/food/`,
   food_detail: (idFood: any) => `${SERVER}${SERVER_CONTEXT}/api/food/${idFood}/`,
+  add_food: `${SERVER}${SERVER_CONTEXT}/api/food/addfood/`,
   login: `${SERVER}${SERVER_CONTEXT}/api/login/`,
   register: `${SERVER}${SERVER_CONTEXT}/api/dangky/`,
   chiNhanh: (idChiNhanh: any) => `${SERVER}${SERVER_CONTEXT}/api/ban/${idChiNhanh}/`,
   ban: (idBan: any) => `${SERVER}${SERVER_CONTEXT}/api/thongtinban/${idBan}/`,
   forgotPass: `${SERVER}${SERVER_CONTEXT}/api/quenmatkhau/`,
-  googleSignIn: `${SERVER}${SERVER_CONTEXT}/api/login/google/`
+  googleSignIn: `${SERVER}${SERVER_CONTEXT}/api/login/google/`,
+  cate: `${SERVER}${SERVER_CONTEXT}/api/cates/`
 };
 
 @Injectable({
@@ -46,6 +48,17 @@ export class ApiService {
   }
 
   async getFood(endpoint: string) {
+    try {
+      return await lastValueFrom(
+        this.http.get(endpoint)
+      );
+    } catch(e) {
+      console.log(e)
+      return null;
+    }
+  }
+
+  async getCate(endpoint: string) {
     try {
       return await lastValueFrom(
         this.http.get(endpoint)

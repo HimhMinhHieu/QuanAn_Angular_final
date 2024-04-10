@@ -48,6 +48,8 @@ import {
 } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
+import { OwnerComponent } from './component/owner/owner.component';
+import { TabsModule } from "ngx-bootstrap/tabs"
 // import { metaReducers, reducers } from './Reducer/Global';
 
 @NgModule({
@@ -76,6 +78,7 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
     DanhGiaComponent,
     ChatbotComponent,
     FoodDetailComponent,
+    OwnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +92,7 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
     EffectsModule.forRoot([AuthEffect]),
     SocialLoginModule,
     GoogleSigninButtonModule,
+    TabsModule.forRoot()
   ],
   providers: [
     CookieService,
