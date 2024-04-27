@@ -1,0 +1,31 @@
+<img
+  src="{{ detailCN.image }}"
+  class="rounded-circle mx-auto d-block img-fluid w-25 h-25 mt-3"
+  alt="image store"
+/>
+<table class="table table-hover table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Chi Tiết</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">ID</th>
+      <td>{{ detailCN.id }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Name</th>
+      <td>Chi Nhánh {{ detailCN.id }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Ngày Tạo</th>
+      <td>{{ detailCN.createdDate }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Thuộc sở hữu</th>
+      <td>{{ detailCN.idNguoiDung.lastName }} {{ detailCN.idNguoiDung.firstName }}</td>
+    </tr>
+  </tbody>
+</table>

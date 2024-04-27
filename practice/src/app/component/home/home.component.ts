@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit {
     console.log(this.noiDung.value);
   }
 
-  addComment() {
+  addComment(idThucAn: any) {
     // console.log(this.cont)
     this.authAPI
       .post(endpointsAuth.addcomment, {
@@ -100,6 +100,7 @@ export class HomeComponent implements OnInit {
         idChiNhanh: 4,
         danhGia: this.danhGia.value,
         idNguoiDung: this.user.id,
+        idThucAn: idThucAn
       })
       .subscribe((data) => {
         // this.comment = Object.values(this.comment).unshift([data, ...this.comment])
@@ -108,6 +109,10 @@ export class HomeComponent implements OnInit {
           // console.log(this.comment);
         });
         console.log(data);
+        this.apis
+          .postASYNC(endpoints.post_sentiment, {
+            noiDung: this.cont,
+          })
       });
   }
 
@@ -123,13 +128,15 @@ export class HomeComponent implements OnInit {
   }
 
   onChangeQuan(value: any) {
-    this.quantity = parseInt(value)
-    console.log(this.quantity)
+    this.quantity = parseInt(value);
+    console.log(this.quantity);
   }
 
   //addCart
   addCart(product: any) {
     this.store.dispatch(increment({ payload: this.count }));
+    console.log(product)
+    console.log(product.id)
     if (product.id in this.carts) {
       this.carts[product.id].soLuong += 1;
     } else {

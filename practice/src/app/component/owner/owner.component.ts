@@ -51,6 +51,9 @@ export class OwnerComponent implements OnInit {
   avatar: File | null | undefined = null;
   isModalShow!: boolean;
 
+  //ChiNhanh_detail
+  detailCN !: any;
+
   constructor() {
     this.addFood = this.fb.group({
       name: [, Validators.required],
@@ -113,6 +116,11 @@ export class OwnerComponent implements OnInit {
     this.cate = dataCate;
     if (this.cate !== null) this.loading = false;
     if (this.cate === null) this.loading = true;
+    //...
+
+    //ChiNhanh_detail
+    let detail = await this.authAPIs.getAPIAsync(endpointsAuth.chiNhanh_detail(4));
+    this.detailCN = detail
     //...
   }
 
@@ -209,4 +217,6 @@ export class OwnerComponent implements OnInit {
   onFileChangeEdit(event: Event) {
     this.avatar = (event.target as HTMLInputElement).files?.[0];
   }
+
+
 }

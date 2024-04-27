@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { lastValueFrom } from 'rxjs';
 
 const SERVER_CONTEXT = '/quanan';
 const SERVER = 'http://localhost:8080';
@@ -15,8 +16,15 @@ export const endpointsAuth = {
     `${SERVER}${SERVER_CONTEXT}/api/stores/${storeId}/comments/`,
   addcomment: `${SERVER}${SERVER_CONTEXT}/api/comments/`,
   addFood: `${SERVER}${SERVER_CONTEXT}/api/food/addfood/`,
-  deleteFood: (idFood: any) => `${SERVER}${SERVER_CONTEXT}/api/food/delete/${idFood}/`,
-  patchFood: (idFood: any) => `${SERVER}${SERVER_CONTEXT}/api/food/patch/${idFood}/`,
+  deleteFood: (idFood: any) =>
+    `${SERVER}${SERVER_CONTEXT}/api/food/delete/${idFood}/`,
+  patchFood: (idFood: any) =>
+    `${SERVER}${SERVER_CONTEXT}/api/food/patch/${idFood}/`,
+  payOnline: `${SERVER}${SERVER_CONTEXT}/api/pay/pay_online/`,
+  chiNhanh_detail: (idChiNhanh: any) =>
+    `${SERVER}${SERVER_CONTEXT}/api/chinhanh/${idChiNhanh}/`,
+  stats: `${SERVER}${SERVER_CONTEXT}/api/stats/`,
+  get_sentiment: `${SERVER}${SERVER_CONTEXT}/api/sentiment/`
 };
 
 @Injectable({
@@ -32,6 +40,37 @@ export class AuthApiService {
         Authorization: this.cookieService.get('token'),
       }),
     });
+  }
+
+  async getAPIAsync(endpoint: string) {
+    try {
+      return await lastValueFrom(
+        this.http.get(endpoint, {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: this.cookieService.get('token'),
+          }),
+        })
+      );
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  async getAPIAsyncSentiment(endpoint: string) {
+    try {
+      return await lastValueFrom(
+        this.http.get(endpoint, {
+          headers: new HttpHeaders({
+            Authorization: this.cookieService.get('token'),
+          }),
+        })
+      );
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
   }
 
   post(endpoint: string, body: any) {

@@ -37,10 +37,12 @@
   </tbody>
 </table>
 
-<button type="button" [disabled]="!huser" (click)="pay()" class="btn btn-info">
-  Thanh toán
-</button>
 <div #paypal></div>
+
+
+
+
+
 <div *ngIf="hcarts === false" class="alert alert-info mt-2">
   Không có sản phẩm trong giỏ!
 </div>

@@ -193,10 +193,12 @@ export class CartComponent implements OnInit {
           const order = await actions.order.capture();
           console.log(order);
           this.paidFor = true;
-          this.carts = null;
-          this.cookie.delete('cart-foodapp');
-          this.store.dispatch(update({ payload: 0 }));
-          this.router.navigate(['/']);
+          this.authApi.post(endpointsAuth.pay, this.carts).subscribe(() => {
+            this.carts = null;
+            this.cookie.delete('cart-foodapp');
+            this.store.dispatch(update({ payload: 0 }));
+            this.router.navigate(['/']);
+          });
         },
         onError: (err: any) => {
           console.log(err);

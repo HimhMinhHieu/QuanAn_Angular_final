@@ -1,3 +1,4 @@
+
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -49,7 +50,15 @@ import {
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
 import { OwnerComponent } from './component/owner/owner.component';
-import { TabsModule } from "ngx-bootstrap/tabs"
+import { TabsModule } from "ngx-bootstrap/tabs";
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TableDetailComponent } from './component/owner/TableDetail/table-detail/table-detail.component'
+import { ChartComponent } from './component/owner/Chart/chart/chart.component';
+import { ChartModule } from 'angular-highcharts';
+import { ChartMonthComponent } from './component/owner/Chart/chart-month/chart-month.component';
+import { CharMonthYearComponent } from './component/owner/Chart/char-month-year/char-month-year.component';
+import { ChartCommentComponent } from './component/owner/Chart/chart-comment/chart-comment.component';
+import { DetailChartCommentComponent } from './component/owner/Chart/chart-comment/detail-chart-comment/detail-chart-comment.component';
 // import { metaReducers, reducers } from './Reducer/Global';
 
 @NgModule({
@@ -79,6 +88,12 @@ import { TabsModule } from "ngx-bootstrap/tabs"
     ChatbotComponent,
     FoodDetailComponent,
     OwnerComponent,
+    TableDetailComponent,
+    ChartComponent,
+    ChartMonthComponent,
+    CharMonthYearComponent,
+    ChartCommentComponent,
+    DetailChartCommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +107,9 @@ import { TabsModule } from "ngx-bootstrap/tabs"
     EffectsModule.forRoot([AuthEffect]),
     SocialLoginModule,
     GoogleSigninButtonModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ChartModule,
+    ModalModule.forRoot()
   ],
   providers: [
     CookieService,

@@ -12,25 +12,41 @@
   ></script>
 </head> -->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<ng-template #load>
+  <app-my-spinner></app-my-spinner>
+</ng-template>
+
+<div *ngIf="loading === false; else load" #sliderContainer class="slider-container">
+  <div #slideLeft class="left-slide">
+    <div *ngFor="let f of dataFoodRecommend">
+      <h1>{{f.name}}</h1>
+      <p>{{f.price}} VND</p>
+      <button (click)="addCart(f)" class="btn btn-success mt-5 button-order">
+        <span>Đặt món ngay</span>
+        <i class="fa-solid fa-cart-plus icon-cart"></i>
+      </button>
+
     </div>
   </div>
+  <div #slideRight class="right-slide">
+    <div *ngFor="let f of dataFoodRecommend"
+      style="
+        background-image: url('{{f.image}}');
+      "
+    ></div>
+  </div>
+
+
+
+  <div class="action-buttons">
+    <button (click)="changeSlide('down')" class="down-button">
+      <i class="fa fa-arrow-down"></i>
+    </button>
+    <button (click)="changeSlide('up')" class="up-button">
+      <i class="fa fa-arrow-up"></i>
+    </button>
+  </div>
 </div>
+
+

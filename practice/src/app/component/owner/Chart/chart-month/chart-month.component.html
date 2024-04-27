@@ -1,0 +1,12 @@
+<select  (change)="selectChange(yearChange.value)" class="form-select" aria-label="Default select example" #yearChange [value]="valueChange">
+  <option *ngFor="let y of itemYear2" default value="{{y}}">{{y}}</option>
+</select>
+
+<div style="width: auto" class="charts">
+  <div class="line" [chart]="chartStatMonth"></div>
+</div>
+
+<div *ngIf="statMonthYear !== null" class="charts">
+  <div class="pie" [chart]="chartMonthYear"></div>
+</div>
+

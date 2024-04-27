@@ -75,8 +75,21 @@
 
       <hr class="my-5" />
 
+      <section *ngIf="huser === true" class="text-center">
+        <h4 class="mb-5">
+          <strong>MÓN ĂN GỢI Ý</strong>
+          <hr class="hr hr-blurry" />
+        </h4>
+        <div class="card">
+          <div class="card-body">
+            <app-chatbot></app-chatbot>
+          </div>
+        </div>
+
+
+      </section>
       <!--Section: Content-->
-      <section class="text-center">
+      <section class="text-center mt-5">
         <h4 class="mb-5">
           <strong>MENU</strong>
           <hr class="hr hr-blurry" />
@@ -114,10 +127,11 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ f.name }}</h5>
                   <p class="card-text">
-                    {{ f.price }}
+                    {{ f.price }} VND
                   </p>
-                  <button (click)="addCart(f)" class="btn btn-primary me-2">
-                    Đặt món
+                  <button (click)="addCart(f)" class="btn btn-success me-2 button-order">
+                    <span> Đặt món </span>
+                    <i class="fa-solid fa-cart-plus icon-cart"></i>
                   </button>
                   <!-- <button (click)="detailFood(f)" class="btn btn-primary">
                     Xem chi tiết
@@ -125,11 +139,12 @@
                   <!-- Button trigger modal -->
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-info button-order"
                     data-bs-toggle="modal"
                     attr.data-bs-target="#foodDetail_{{ f.id }}"
                   >
-                    Xem Chi Tiết
+                    <span>Xem Chi Tiết</span>
+                    <i class="fa-solid fa-circle-info icon-info"></i>
                   </button>
                 </div>
               </div>
@@ -185,11 +200,12 @@
 
                                     <div class="d-flex justify-content-start">
                                       <input
-                                      (change)="onChangeQuan(quan.value)"
+                                        (change)="onChangeQuan(quan.value)"
                                         class="form-control text-center me-3"
                                         id="inputQuantity"
                                         type="num"
-                                        [value]="quantity" #quan
+                                        [value]="quantity"
+                                        #quan
                                         style="max-width: 3rem"
                                       />
                                       <span
@@ -228,7 +244,7 @@
                               </div>
                             </section>
                           </div>
-                          <div class="vr vr-blurry" style="height: auto;"></div>
+                          <div class="vr vr-blurry" style="height: auto"></div>
                           <div class="col-sm">
                             <div class="container commentScroll">
                               <div class="be-comment-block">
@@ -279,49 +295,52 @@
                                     />
                                     <div class="comment-box text-center">
                                       <h4>Add a comment</h4>
-                                      <div class="rating">
-                                        <input
-                                          type="radio"
-                                          name="rating"
-                                          value="5"
-                                          id="5"
-                                          [formControl]="danhGia"
-                                        />
-                                        <label for="5">☆</label>
-                                        <input
-                                          type="radio"
-                                          name="rating"
-                                          value="4"
-                                          id="4"
-                                          [formControl]="danhGia"
-                                        />
-                                        <label for="4">☆</label>
-                                        <input
-                                          type="radio"
-                                          name="rating"
-                                          value="3"
-                                          id="3"
-                                          [formControl]="danhGia"
-                                        />
-                                        <label for="3">☆</label>
-                                        <input
-                                          type="radio"
-                                          name="rating"
-                                          value="2"
-                                          id="2"
-                                          [formControl]="danhGia"
-                                        />
-                                        <label for="2">☆</label>
-                                        <input
-                                          type="radio"
-                                          name="rating"
-                                          value="1"
-                                          id="1"
-                                          [formControl]="danhGia"
-                                        />
-                                        <label for="1">☆</label>
-                                      </div>
-                                      <div class="comment-area ">
+                                      <form>
+                                        <div class="rating">
+                                          <input
+                                            type="radio"
+                                            name="rating"
+                                            value="5"
+                                            id="5"
+                                            [formControl]="danhGia"
+                                            [checked]="true"
+                                          />
+                                          <label for="5">☆</label>
+                                          <input
+                                            type="radio"
+                                            name="rating"
+                                            value="4"
+                                            id="4"
+                                            [formControl]="danhGia"
+                                          />
+                                          <label for="4">☆</label>
+                                          <input
+                                            type="radio"
+                                            name="rating"
+                                            value="3"
+                                            id="3"
+                                            [formControl]="danhGia"
+                                          />
+                                          <label for="3">☆</label>
+                                          <input
+                                            type="radio"
+                                            name="rating"
+                                            value="2"
+                                            id="2"
+                                            [formControl]="danhGia"
+                                          />
+                                          <label for="2">☆</label>
+                                          <input
+                                            type="radio"
+                                            name="rating"
+                                            value="1"
+                                            id="1"
+                                            [formControl]="danhGia"
+                                          />
+                                          <label for="1">☆</label>
+                                        </div>
+                                      </form>
+                                      <div class="comment-area">
                                         <textarea
                                           [value]="cont"
                                           (change)="onChange()"
@@ -334,7 +353,7 @@
 
                                       <div class="text-center mt-4">
                                         <button
-                                          (click)="addComment()"
+                                          (click)="addComment(f.id)"
                                           class="btn btn-success send px-5"
                                         >
                                           Send message
@@ -353,9 +372,22 @@
                       </div>
                     </div>
                     <div class="modal-footer justify-content-center">
-                      <button (click)="addCartDetail(f)" type="button" class="btn btn-outline-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                      <button
+                        (click)="addCartDetail(f)"
+                        type="button"
+                        class="btn btn-outline-success"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-cart"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
+                          />
                         </svg>
                         Add to cart
                       </button>

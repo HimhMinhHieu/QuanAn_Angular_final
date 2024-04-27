@@ -206,6 +206,14 @@
                   >Thông Tin Cá Nhân</a
                 >
               </li>
+              <li *ngIf="(user$ | async)?.user.vaiTro == 'OWNER'">
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['/owner']"
+                  routerLinkActive="router-link-active"
+                  >Thông Tin Cửa Hàng</a
+                >
+              </li>
               <li>
                 <a
                   class="dropdown-item"

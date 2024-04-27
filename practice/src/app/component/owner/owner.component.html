@@ -1,6 +1,10 @@
-<div class="nav justify-content-center align-items-center text-center w-auto">
-  <tabset [justified]="true">
-    <tab heading="GeeksforGeeks" class="mt-4 w-auto">
+<div class="nav justify-content-center text-center">
+  <tabset class="w-100" [justified]="true">
+    <tab heading="THÔNG TIN CỬA HÀNG" class="mt-4">
+      <app-table-detail></app-table-detail>
+      <!-- <button class="btn btn-danger ms-3 mb-3" (click)="onClick()">Trở về trang chủ</button> -->
+    </tab>
+    <tab heading="QUẢN LÝ CỬA HÀNG" class="mt-4 w-auto">
       <!--Section: Content-->
       <section class="text-center">
         <div class="position-relative">
@@ -221,46 +225,75 @@
                   <h5 class="card-title">{{ f.name }}</h5>
 
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngIf=" foodSelected !== f || !editSoLuong">
+                    <li
+                      class="list-group-item"
+                      *ngIf="foodSelected !== f || !editSoLuong"
+                    >
                       Số Lượng Còn Lại: {{ f.soLuong }}
-                      <i (click)="EditButtonSoLuong(f)" class="fa-solid fa-pencil"></i>
+                      <i
+                        (click)="EditButtonSoLuong(f)"
+                        class="fa-solid fa-pencil"
+                      ></i>
                     </li>
-                    <li class="list-group-item" *ngIf="foodSelected === f && editSoLuong ">
-                      <label class=".float-start" for="soLuong ">Số Lượng Còn Lại:</label>
+                    <li
+                      class="list-group-item"
+                      *ngIf="foodSelected === f && editSoLuong"
+                    >
+                      <label class=".float-start" for="soLuong "
+                        >Số Lượng Còn Lại:</label
+                      >
                       <input
                         type="num"
                         id="soLuong"
                         name="soLuong"
-                        value={{f.soLuong}}
-                        style="width: 13%;"
+                        value="{{ f.soLuong }}"
+                        style="width: 13%"
                         (keydown.Escape)="cancelEdit()"
                         (blur)="cancelEdit()"
-                        (keydown.enter)="onSuccesChangeSoLuong(f, soLuong.value)"
-                        (keydown.Meta.enter)="onSuccesChangeSoLuong(f, soLuong.value)"
+                        (keydown.enter)="
+                          onSuccesChangeSoLuong(f, soLuong.value)
+                        "
+                        (keydown.Meta.enter)="
+                          onSuccesChangeSoLuong(f, soLuong.value)
+                        "
                         #soLuong
                       />
-                      <i (click)="cancelEdit()" class="fa-solid fa-x icon-right"></i>
+                      <i
+                        (click)="cancelEdit()"
+                        class="fa-solid fa-x icon-right"
+                      ></i>
                     </li>
 
-                    <li class="list-group-item" *ngIf=" (foodSelected !== f || editPrice === false)">
+                    <li
+                      class="list-group-item"
+                      *ngIf="foodSelected !== f || editPrice === false"
+                    >
                       Đơn Giá: {{ f.price }} $
-                      <i (click)="EditButtonPrice(f)" class="fa-solid fa-pencil"></i>
+                      <i
+                        (click)="EditButtonPrice(f)"
+                        class="fa-solid fa-pencil"
+                      ></i>
                     </li>
-                    <li class="list-group-item" *ngIf="foodSelected === f && editPrice">
-
+                    <li
+                      class="list-group-item"
+                      *ngIf="foodSelected === f && editPrice"
+                    >
                       <label class=".float-start" for="price ">Đơn Giá:</label>
                       <i class="fas fa-dollar-sign trailing"></i>
                       <input
                         type="num"
                         id="price"
                         name="price"
-                        value={{f.price}}
-                        style="width: 25%;"
+                        value="{{ f.price }}"
+                        style="width: 25%"
                         (keydown.Escape)="cancelEdit()"
                         (blur)="cancelEdit()"
                         #donGia
                       />
-                      <i (click)="cancelEdit()" class="fa-solid fa-x icon-right"></i>
+                      <i
+                        (click)="cancelEdit()"
+                        class="fa-solid fa-x icon-right"
+                      ></i>
                     </li>
                     <li
                       class="list-group-item active-food"
@@ -313,11 +346,26 @@
       </section>
       <!--Section: Content-->
     </tab>
-    <tab heading="GeeksforGeeks1" class="mt-4">
-      Tabs component in Angular ngx bootstrap 2
-    </tab>
-    <tab heading="GeeksforGeeks2" class="mt-4">
-      Tabs component in Angular ngx bootstrap 3
+
+    <tab heading="THỐNG KÊ - BÁO CÁO" class="mt-4">
+      <tabset style="width: 100%" [vertical]="true" type="pills">
+        <tab style="width: 100%" heading="THỐNG KÊ THEO DOANH THU">
+          <tabset type="pills">
+            <tab style="width: 100%" heading="THỐNG KÊ THEO DOANH THU THEO NĂM">
+              <app-chart></app-chart>
+            </tab>
+            <tab style="width: 100%" heading="THỐNG KÊ THEO THÁNG - NĂM CỤ THỂ">
+              <app-chart-month></app-chart-month>
+            </tab>
+          </tabset>
+        </tab>
+        <tab style="width: auto" heading="THỐNG KÊ BÌNH LUẬN">
+            <h1><app-chart-comment></app-chart-comment></h1>
+        </tab>
+        <tab heading="Vertical 3">
+
+        </tab>
+      </tabset>
     </tab>
   </tabset>
 </div>

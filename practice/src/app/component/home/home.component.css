@@ -249,3 +249,50 @@ body {
   color: white;
   background-color: #dc4c64;
 }
+
+
+.button-order:hover > span {
+  opacity: 0;
+}
+
+.button-order:hover > .icon-cart{
+  color: #fff;
+  display: inline;
+  position: absolute;
+  left: 33%;
+}
+
+.button-order:hover > .icon-info{
+  color: #fff;
+  display: inline;
+  position: absolute;
+  left: 61%;
+}
+
+
+.button-order:active {
+  transform: translateY(3px)
+}
+
+.button-order:hover > .icon-cart {
+  animation-name: moveCart;
+  animation-duration: .5s;
+}
+
+.button-order:hover > .icon-info {
+  animation-name: moveCart;
+  animation-duration: .5s;
+}
+
+@keyframes moveCart {
+  0%   {transform: translateX(50px);}
+  100% {transform: translateX(0)}
+}
+
+.icon-cart {
+  display: none;
+}
+
+.icon-info {
+  display: none;
+}
