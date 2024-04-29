@@ -24,7 +24,7 @@ export class ChartCommentComponent implements OnInit {
 
   name !: any;
   y !: any;
-
+  p: number = 1;
   dulieuCmt !: any;
 
   test!: any

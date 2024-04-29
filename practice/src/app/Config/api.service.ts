@@ -28,6 +28,7 @@ export const endpoints = {
   cate: `${SERVER}${SERVER_CONTEXT}/api/cates/`,
   post_sentiment: `${SERVER_SENTIMENT}/getsentiment/`,
   sentiment_user: `${SERVER_SENTIMENT}/getrec/`,
+  get_food_comments: (foodID: any) => `${SERVER}${SERVER_CONTEXT}/api/food/${foodID}/comments/`
 };
 
 @Injectable({

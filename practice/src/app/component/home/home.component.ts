@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   comment!: any;
   cont: any;
   huser!: any;
+  loadingComment: any = true;
 
   constructor(
     private apis: ApiService,
@@ -65,10 +66,12 @@ export class HomeComponent implements OnInit {
       this.carts = JSON.parse(this.cookie.get('cart-foodapp'));
     }
 
-    this.authAPI.get(endpointsAuth.comments(4)).subscribe((data) => {
-      this.comment = data;
-      console.log(this.comment);
-    });
+    // this.apis.get(endpointsAuth.comments(4)).subscribe((data) => {
+    //   this.comment = data;
+    //   console.log(this.comment);
+    // });
+
+
 
     this.huser = this.cookie.check('user');
     console.log(this.user);
@@ -169,6 +172,17 @@ export class HomeComponent implements OnInit {
         };
       }
       this.cookie.set('cart-foodapp', JSON.stringify(this.carts));
+    }
+  }
+
+  async getFoodComment(idThucAn: any) {
+    let dataCommentFood = await this.apis.getASYNC(endpoints.get_food_comments(idThucAn))
+    if(dataCommentFood !== null) {
+      this.loadingComment = false
+      this.comment = dataCommentFood
+    }
+    if(dataCommentFood === null) {
+      this.loadingComment = true
     }
   }
   // detailFood(product: any)

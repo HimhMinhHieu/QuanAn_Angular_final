@@ -18,6 +18,9 @@
     rel="stylesheet"
   />
 </head>
+<ng-template #load>
+  <app-my-spinner></app-my-spinner>
+</ng-template>
 
 <!--Main layout-->
 <ng-container *ngIf="user.vaiTro === 'ban'">
@@ -142,6 +145,7 @@
                     class="btn btn-info button-order"
                     data-bs-toggle="modal"
                     attr.data-bs-target="#foodDetail_{{ f.id }}"
+                    (click)="getFoodComment(f.id)"
                   >
                     <span>Xem Chi Tiết</span>
                     <i class="fa-solid fa-circle-info icon-info"></i>
@@ -167,6 +171,7 @@
                         class="btn-close"
                         data-bs-dismiss="modal"
                         aria-label="Close"
+
                       ></button>
                     </div>
                     <div class="modal-body">
@@ -245,7 +250,7 @@
                             </section>
                           </div>
                           <div class="vr vr-blurry" style="height: auto"></div>
-                          <div class="col-sm">
+                          <div *ngIf="loadingComment === false;else load" class="col-sm">
                             <div class="container commentScroll">
                               <div class="be-comment-block">
                                 <!-- <h1 class="comments-title">Comments</h1> -->

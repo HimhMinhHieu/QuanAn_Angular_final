@@ -11,7 +11,7 @@
 <!-- <button type="button" class="btn btn-primary" (click)="showModal()">Render auto-shown modal</button> -->
 <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal"
      class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <div class="modal-dialog modal-xl modal-dialog-centered justify-content-center">
     <div class="modal-content">
       <div class="modal-header">
         <h4 id="dialog-auto-name" class="modal-title pull-left">{{name}} - {{y}}%</h4>
@@ -20,7 +20,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-hover">
+        <table class="table table-hover text-center">
           <thead>
             <tr>
               <th scope="col">ID Comment</th>
@@ -32,22 +32,25 @@
               <th scope="col">ID Món Ăn</th>
               <th scope="col">Tên Món Ăn</th>
               <th scope="col">Hình Ảnh</th>
+              <th scope="col">Ngày Tạo</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cmt of testChart">
+            <tr *ngFor="let cmt of testChart | paginate : { itemsPerPage: 3, currentPage: p }">
               <th scope="row">{{cmt.id}}</th>
               <td>{{cmt.noi_dung}}</td>
               <td>{{cmt.danh_gia}}</td>
               <td>{{cmt.id_nguoi_dung.lastName}}</td>
               <td>{{cmt.id_nguoi_dung.firstName}}</td>
-              <td><img src="{{cmt.id_nguoi_dung.avatar}}" class="img-fluid" style="height: 50%;"/></td>
+              <td><img src="{{cmt.id_nguoi_dung.avatar}}" class="img-fluid" style="height: 7rem;"/></td>
               <td>{{cmt.id_thuc_an.id}}</td>
               <td>{{cmt.id_thuc_an.name}}</td>
               <td><img src="{{cmt.id_thuc_an.image}}" class="img-fluid" style="height: 50%;"/></td>
+              <td>{{cmt.created_date | date: 'fullDate'}}</td>
             </tr>
           </tbody>
         </table>
+        <pagination-controls style="font-size: small;" (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>

@@ -24,7 +24,8 @@ export const endpointsAuth = {
   chiNhanh_detail: (idChiNhanh: any) =>
     `${SERVER}${SERVER_CONTEXT}/api/chinhanh/${idChiNhanh}/`,
   stats: `${SERVER}${SERVER_CONTEXT}/api/stats/`,
-  get_sentiment: `${SERVER}${SERVER_CONTEXT}/api/sentiment/`
+  get_sentiment: `${SERVER}${SERVER_CONTEXT}/api/sentiment/`,
+  get_food_comments: (foodID: any) => `${SERVER}${SERVER_CONTEXT}/api/food/${foodID}/comments/`
 };
 
 @Injectable({
