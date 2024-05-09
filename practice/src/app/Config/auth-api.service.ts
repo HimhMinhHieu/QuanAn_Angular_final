@@ -25,7 +25,11 @@ export const endpointsAuth = {
     `${SERVER}${SERVER_CONTEXT}/api/chinhanh/${idChiNhanh}/`,
   stats: `${SERVER}${SERVER_CONTEXT}/api/stats/`,
   get_sentiment: `${SERVER}${SERVER_CONTEXT}/api/sentiment/`,
-  get_food_comments: (foodID: any) => `${SERVER}${SERVER_CONTEXT}/api/food/${foodID}/comments/`
+  patchFoodImage: (idFood: any) => `${SERVER}${SERVER_CONTEXT}/api/food/patchavatar/${idFood}/`,
+  allFood: `${SERVER}${SERVER_CONTEXT}/api/foodall/`,
+  chiNhanh: (idChiNhanh: any) =>
+    `${SERVER}${SERVER_CONTEXT}/api/ban/${idChiNhanh}/`,
+  ban: (idBan: any) => `${SERVER}${SERVER_CONTEXT}/api/thongtinban/${idBan}/`,
 };
 
 @Injectable({

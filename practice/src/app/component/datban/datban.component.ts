@@ -19,14 +19,19 @@ export class DatbanComponent implements OnInit {
     private rotuer: Router
     ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get("idChiNhanh") as any);
     this.idChiNhanh = id;
     this.loading = true
-    this.API.get(endpoints.chiNhanh(this.idChiNhanh)).subscribe((data) => {
-      this.ban = data
+    // this.authAPI.get(endpoints.chiNhanh(this.idChiNhanh)).subscribe((data) => {
+    //   this.ban = data
+    //   this.loading = false
+    // })
+    let data = await this.authAPI.getAPIAsync(endpointsAuth.chiNhanh(this.idChiNhanh))
+    if (data !== null) {
       this.loading = false
-    })
+      this.ban = data
+    }
     this.user = this.cookie.check('user')
     console.log(this.user)
   }

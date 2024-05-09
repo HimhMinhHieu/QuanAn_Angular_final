@@ -73,7 +73,7 @@ export class ChartCommentComponent implements OnInit {
           type: 'pie',
         },
         title: {
-          text: 'Egg Yolk Composition',
+          text: 'BIỂU ĐỒ TRÒN BIỂU HIỆN TÌNH TRẠNG BÌNH LUẬN CỦA QUÁN ĂN',
         },
         tooltip: {
           valueSuffix: '%',

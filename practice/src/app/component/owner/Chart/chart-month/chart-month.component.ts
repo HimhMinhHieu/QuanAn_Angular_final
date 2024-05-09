@@ -291,7 +291,7 @@ export class ChartMonthComponent {
               type: 'pie',
             },
             title: {
-              text: 'Egg Yolk Composition',
+              text: `BIỂU ĐỒ TRÒN THỐNG KÊ - BÁO CÁO THEO THÁNG ${pointValue} - NĂM ${this.valueChange}`,
             },
             tooltip: {
               valueSuffix: '%',

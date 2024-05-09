@@ -100,7 +100,7 @@ export class OwnerComponent implements OnInit {
     //   this.loading = false
     //   // this.totalProduct = data.length;
     // })
-    let data = await this.apis.getFood(endpoints.foods);
+    let data = await this.authAPIs.getAPIAsync(endpointsAuth.allFood);
     this.foods = data;
     if (this.foods !== null) this.loading = false;
     if (this.foods === null) this.loading = true;
@@ -108,7 +108,6 @@ export class OwnerComponent implements OnInit {
       this.user = JSON.parse(this.cookie.get('user'));
     }
     this.huser = this.cookie.check('user');
-    console.log(this.user);
     //...
 
     //Take Category From API
@@ -204,6 +203,37 @@ export class OwnerComponent implements OnInit {
 
   }
 
+  onSuccesChangePrice(food: any,price: any){
+    this.avatar = food.image as File
+
+    // const file= new File([],'');
+    this.q = parseInt(price);
+    const formData = new FormData()
+    formData.append('price', this.q)
+    // formData.append('avatar', food.image as File)
+    // console.log(formData.get('avatar'))
+    // console.log(formData.get('soLuong'))
+    this.authAPIs.patch(endpointsAuth.patchFood(food.id), formData
+    ).subscribe(data => {console.log(data)
+      this.ngOnInit();
+    })
+
+  }
+
+  onSuccessChangeActive(food:any, active: any) {
+    const formData = new FormData()
+    formData.append('active', active.value)
+    this.authAPIs.patch(endpointsAuth.patchFood(food.id), formData
+    ).subscribe(data => {console.log(data)
+      this.ngOnInit();
+    })
+  }
+
+  onSuccessChangeImage(food:any) {
+
+
+  }
+
   cancelEdit() {
     this.foodSelected = null
     // this.canEdit = false;
@@ -214,9 +244,39 @@ export class OwnerComponent implements OnInit {
   }
   //...
 
-  onFileChangeEdit(event: Event) {
+  onFileChangeEdit(food:any ,event: Event) {
     this.avatar = (event.target as HTMLInputElement).files?.[0];
+    // console.log(this.avatar)
+    const formData = new FormData()
+    if(this.avatar) formData.append('avatar', this.avatar)
+    this.authAPIs.patch(endpointsAuth.patchFoodImage(food.id), formData
+    ).subscribe(data =>
+      this.ngOnInit()
+    )
   }
 
-
+  //delete Food
+  deleteFood(food:any) {
+    this.authAPIs.delete(endpointsAuth.deleteFood(food.id)).subscribe(() => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+          this.ngOnInit();
+        }
+      });
+    })
+  }
+  //...
 }

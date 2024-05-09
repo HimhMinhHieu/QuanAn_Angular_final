@@ -71,8 +71,6 @@ export class HomeComponent implements OnInit {
     //   console.log(this.comment);
     // });
 
-
-
     this.huser = this.cookie.check('user');
     console.log(this.user);
   }
@@ -103,19 +101,30 @@ export class HomeComponent implements OnInit {
         idChiNhanh: 4,
         danhGia: this.danhGia.value,
         idNguoiDung: this.user.id,
-        idThucAn: idThucAn
+        idThucAn: idThucAn,
       })
-      .subscribe((data) => {
+      .subscribe(async (data) => {
         // this.comment = Object.values(this.comment).unshift([data, ...this.comment])
-        this.authAPI.get(endpointsAuth.comments(4)).subscribe((data) => {
-          this.comment = data;
-          // console.log(this.comment);
-        });
+        // this.authAPI.get(endpointsAuth.comments(4)).subscribe((data) => {
+        //   this.comment = data;
+        //   // console.log(this.comment);
+        // });
+        let dataCommentFood = await this.apis.getASYNC(
+          endpoints.get_food_comments(idThucAn)
+        );
+        if (dataCommentFood !== null) {
+          this.loadingComment = false;
+          this.comment = dataCommentFood;
+        }
+        if (dataCommentFood === null) {
+          this.loadingComment = true;
+        }
         console.log(data);
-        this.apis
-          .postASYNC(endpoints.post_sentiment, {
-            noiDung: this.cont,
-          })
+        this.apis.postASYNC(endpoints.post_sentiment, {
+          noiDung: this.cont,
+          idThucAn: idThucAn,
+          idNguoiDung: this.user.id
+        });
       });
   }
 
@@ -138,8 +147,8 @@ export class HomeComponent implements OnInit {
   //addCart
   addCart(product: any) {
     this.store.dispatch(increment({ payload: this.count }));
-    console.log(product)
-    console.log(product.id)
+    console.log(product);
+    console.log(product.id);
     if (product.id in this.carts) {
       this.carts[product.id].soLuong += 1;
     } else {
@@ -176,13 +185,15 @@ export class HomeComponent implements OnInit {
   }
 
   async getFoodComment(idThucAn: any) {
-    let dataCommentFood = await this.apis.getASYNC(endpoints.get_food_comments(idThucAn))
-    if(dataCommentFood !== null) {
-      this.loadingComment = false
-      this.comment = dataCommentFood
+    let dataCommentFood = await this.apis.getASYNC(
+      endpoints.get_food_comments(idThucAn)
+    );
+    if (dataCommentFood !== null) {
+      this.loadingComment = false;
+      this.comment = dataCommentFood;
     }
-    if(dataCommentFood === null) {
-      this.loadingComment = true
+    if (dataCommentFood === null) {
+      this.loadingComment = true;
     }
   }
   // detailFood(product: any)
