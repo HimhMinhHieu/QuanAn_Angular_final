@@ -20,9 +20,8 @@ export const endpoints = {
   add_food: `${SERVER}${SERVER_CONTEXT}/api/food/addfood/`,
   login: `${SERVER}${SERVER_CONTEXT}/api/login/`,
   register: `${SERVER}${SERVER_CONTEXT}/api/dangky/`,
-  chiNhanh: (idChiNhanh: any) =>
-    `${SERVER}${SERVER_CONTEXT}/api/ban/${idChiNhanh}/`,
-  ban: (idBan: any) => `${SERVER}${SERVER_CONTEXT}/api/thongtinban/${idBan}/`,
+
+
   forgotPass: `${SERVER}${SERVER_CONTEXT}/api/quenmatkhau/`,
   googleSignIn: `${SERVER}${SERVER_CONTEXT}/api/login/google/`,
   cate: `${SERVER}${SERVER_CONTEXT}/api/cates/`,

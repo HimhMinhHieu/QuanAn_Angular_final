@@ -1,3 +1,4 @@
+import { CanActivateLogged } from './Config/checkIsLogged';
 import { NgModule, Component } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
@@ -20,16 +21,18 @@ import { DanhGiaComponent } from './component/danh-gia/danh-gia.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
 import { OwnerComponent } from './component/owner/owner.component';
+import { AuthguardService } from './Config/authguard.service';
+import { CanActivateOwner } from './Config/authOwner.guard';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: SignupComponent},
+  {path: 'login', component: LoginComponent, canActivate: [CanActivateLogged]},
+  {path: 'register', component: SignupComponent, canActivate: [CanActivateLogged]},
   {path: 'cart', component: CartComponent},
-  {path: 'datban/:idChiNhanh', component: DatbanComponent},
-  {path: 'datban/:idChiNhanh/ban/:idBan', component: FormDatBanComponent},
+  {path: 'datban/:idChiNhanh', component: DatbanComponent, canActivate: [AuthguardService]},
+  {path: 'datban/:idChiNhanh/ban/:idBan', component: FormDatBanComponent, canActivate: [AuthguardService]},
   {path: 'chonban', component: ChonBanComponent},
   {path: 'chonban/:idBan', component: DatmonOfflineComponent},
   {path: 'cartoff', component: CartOffComponent},
@@ -42,7 +45,7 @@ const routes: Routes = [
   {path: 'detail', component: ThongTinCaNhanComponent},
   {path: ':storeId/comments', component: DanhGiaComponent},
   {path: 'chatbot', component: ChatbotComponent},
-  {path: 'owner', component: OwnerComponent},
+  {path: 'owner', component: OwnerComponent, canActivate: [CanActivateOwner]},
   {path: '**', component: Page404Component},
 ];
 

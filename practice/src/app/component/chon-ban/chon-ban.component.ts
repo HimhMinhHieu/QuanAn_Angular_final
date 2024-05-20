@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, endpoints } from 'src/app/Config/api.service';
+import { AuthApiService, endpointsAuth } from 'src/app/Config/auth-api.service';
 
 @Component({
   selector: 'app-chon-ban',
@@ -8,12 +9,12 @@ import { ApiService, endpoints } from 'src/app/Config/api.service';
   styleUrls: ['./chon-ban.component.css']
 })
 export class ChonBanComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private rotuer: Router, private API: ApiService, ) {}
+  constructor(private route: ActivatedRoute, private rotuer: Router, private API: ApiService, private authAPI: AuthApiService) {}
   loading!:any
   ban!:any
   ngOnInit(): void {
     this.loading = true
-    this.API.get(endpoints.chiNhanh(4)).subscribe((data) => {
+    this.authAPI.get(endpointsAuth.chiNhanh(4)).subscribe((data) => {
       this.ban = data
       this.loading = false
     })

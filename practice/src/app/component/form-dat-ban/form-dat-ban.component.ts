@@ -45,49 +45,9 @@ export class FormDatBanComponent implements OnInit {
     this.idB = idBan;
     this.user = JSON.parse(this.cookie.get('user'));
     this.hoTen = `${this.user.lastName} ${this.user.firstName}`;
-    let data = await this.authAPi.getAPIAsync(endpointsAuth.ban(this.idB));
-    if (data !== null) {
-      this.ban = data;
-      this.moTaBan = this.ban.moTa;
-      let date = new Date(Date.now());
-      let formattedDate = `${date.toLocaleDateString()}-${date.toLocaleTimeString()}`;
-      this.datefor = date;
-      this.datBanForm = this.fb.group(
-        {
-          moTaBan: [
-            { value: this.ban.moTa, disabled: true },
-            Validators.required,
-          ],
-          hoTen: [
-            {
-              value: `${this.user.lastName} ${this.user.firstName}`,
-              disabled: true,
-            },
-            Validators.required,
-          ],
-          idNguoiDat: [
-            { value: this.user.firstName, disabled: true },
-            Validators.required,
-          ],
-          idChiNhanh: [
-            { value: this.idCN, disabled: true },
-            Validators.required,
-          ],
-          idBan: [{ value: this.idB, disabled: true }, Validators.required],
-          moTa: [, [Validators.required]],
-          ngayDat: [
-            { value: formattedDate, disabled: true },
-            Validators.required,
-          ],
-          ngayNhan: [, Validators.required],
-        },
-        {
-          validators: this.controlValueError('ngayDat', 'ngayNhan'),
-        }
-      );
-      console.log(date);
-    }
-    // this.ban = this.API.get(endpoints.ban(this.idB)).subscribe((data) => {
+    // let data = await this.authAPi.getAPIAsync(endpointsAuth.ban(this.idB));
+    // if (data !== null) {
+    //   console.log(this.idCN)
     //   this.ban = data;
     //   this.moTaBan = this.ban.moTa;
     //   let date = new Date(Date.now());
@@ -126,45 +86,86 @@ export class FormDatBanComponent implements OnInit {
     //       validators: this.controlValueError('ngayDat', 'ngayNhan'),
     //     }
     //   );
-    //   console.log(date);
-    // });
+    //   // console.log(date);
+    // }
+    this.ban = this.authAPi.get(endpointsAuth.ban(this.idB)).subscribe((data) => {
+      this.ban = data;
+      this.moTaBan = this.ban.moTa;
+      let date = new Date(Date.now());
+      let formattedDate = `${date.toLocaleDateString()}-${date.toLocaleTimeString()}`;
+      this.datefor = date;
+      this.datBanForm = this.fb.group(
+        {
+          moTaBan: [
+            { value: this.ban.moTa, disabled: true },
+            Validators.required,
+          ],
+          hoTen: [
+            {
+              value: `${this.user.lastName} ${this.user.firstName}`,
+              disabled: true,
+            },
+            Validators.required,
+          ],
+          idNguoiDat: [
+            { value: this.user.firstName, disabled: true },
+            Validators.required,
+          ],
+          idChiNhanh: [
+            { value: this.idCN, disabled: true },
+            Validators.required,
+          ],
+          idBan: [{ value: this.idB, disabled: true }, Validators.required],
+          moTa: [, [Validators.required]],
+          ngayDat: [
+            { value: formattedDate, disabled: true },
+            Validators.required,
+          ],
+          ngayNhan: [, Validators.required],
+        },
+        {
+          validators: this.controlValueError('ngayDat', 'ngayNhan'),
+        }
+      );
+      // console.log(date);
+    });
 
-    // let date = new Date(Date.now());
-    // let formattedDate = `${date.toLocaleDateString()}-${date.toLocaleTimeString()}`;
-    // this.datefor = date;
-    // this.datBanForm = this.fb.group(
-    //   {
-    //     moTaBan: [
-    //       { value: this.ban.moTa, disabled: true },
-    //       Validators.required,
-    //     ],
-    //     hoTen: [
-    //       {
-    //         value: `${this.user.lastName} ${this.user.firstName}`,
-    //         disabled: true,
-    //       },
-    //       Validators.required,
-    //     ],
-    //     idNguoiDat: [
-    //       { value: this.user.firstName, disabled: true },
-    //       Validators.required,
-    //     ],
-    //     idChiNhanh: [{ value: this.idCN, disabled: true }, Validators.required],
-    //     idBan: [{ value: this.idB, disabled: true }, Validators.required],
-    //     moTa: [, [Validators.required]],
-    //     ngayDat: [
-    //       { value: formattedDate, disabled: true },
-    //       Validators.required,
-    //     ],
-    //     ngayNhan: [, Validators.required],
-    //   },
-    //   {
-    //     validators: this.controlValueError('ngayDat', 'ngayNhan'),
-    //   }
-    // );
+    let date = new Date(Date.now());
+    let formattedDate = `${date.toLocaleDateString()}-${date.toLocaleTimeString()}`;
+    this.datefor = date;
+    this.datBanForm = this.fb.group(
+      {
+        moTaBan: [
+          { value: this.ban.moTa, disabled: true },
+          Validators.required,
+        ],
+        hoTen: [
+          {
+            value: `${this.user.lastName} ${this.user.firstName}`,
+            disabled: true,
+          },
+          Validators.required,
+        ],
+        idNguoiDat: [
+          { value: this.user.firstName, disabled: true },
+          Validators.required,
+        ],
+        idChiNhanh: [{ value: this.idCN, disabled: true }, Validators.required],
+        idBan: [{ value: this.idB, disabled: true }, Validators.required],
+        moTa: [, [Validators.required]],
+        ngayDat: [
+          { value: formattedDate, disabled: true },
+          Validators.required,
+        ],
+        ngayNhan: [, Validators.required],
+      },
+      {
+        validators: this.controlValueError('ngayDat', 'ngayNhan'),
+      }
+    );
     // console.log(date);
-    // this.datBanForm.get('idChiNhanh')?.disable()
-    // this.datBanForm.get('idBan')?.disable()
+    this.datBanForm.get('idChiNhanh')?.disable()
+    this.datBanForm.get('idBan')?.disable()
   }
 
   get mt() {
