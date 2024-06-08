@@ -1,0 +1,76 @@
+<div
+  class="pt-3 pe-3"
+  data-mdb-perfect-scrollbar-init
+  style="position: relative; height: 400px"
+  class="scroll-tips"
+>
+  <ng-container *ngFor="let msg of messages(); index as i">
+    <ng-container *ngIf="msg.sender === data.id">
+      <div class="d-flex flex-row justify-content-start">
+        <img
+          src="{{data.avatar}}"
+          alt="{{data.last_name + ' ' + data.first_name}}"
+          style="width: 45px; height: 100%"
+        />
+        <div>
+          <p
+            class="small p-2 ms-3 mb-1 rounded-3"
+            style="background-color: #f5f6f7"
+          >
+            {{msg.text}}
+          </p>
+          <p class="small ms-3 mb-3 rounded-3 text-muted float-end">
+            {{msg.createdAt}}
+          </p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="msg.sender === currentUser.id">
+      <div class="d-flex flex-row justify-content-end">
+        <div>
+          <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+            {{ msg.text }}
+          </p>
+          <p class="small me-3 mb-3 rounded-3 text-muted">{{msg.createdAt}}</p>
+        </div>
+        <img
+          src="{{currentUser.avatar}}"
+          alt="{{currentUser.lastName + ' ' + currentUser.firstName}}"
+          style="width: 45px; height: 100%"
+        />
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+<div
+  class="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2"
+>
+  <img
+    src="{{ data.avatar }}"
+    alt="{{ data.lastName + ' ' + data.firstName }}"
+    style="width: 40px; height: 100%"
+  />
+  <input
+    type="text"
+    class="form-control form-control-lg"
+    id="exampleFormControlInput2"
+    placeholder="Type message"
+    (change)="setText(MessageText.value)"
+    (keydown.enter)="onSendInput(MessageText.value)"
+    [(ngModel)]="message"
+    (focus)="onFocusInput()"
+    #MessageText
+  />
+  <a style="cursor: pointer" class="ms-1 text-muted"
+    ><i class="fas fa-paperclip"></i
+  ></a>
+  <a (click) ="toggleEmojiPicker()" style="cursor: pointer" class="ms-3 text-muted" #toggleEmoji
+    ><i class="fas fa-smile"></i
+  ></a>
+  <emoji-mart class="emoji-mart emoji-pos" set="twitter" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)" title="Pick your emoji…" emoji="point_up" #emoji></emoji-mart>
+  <a (click)="onSend()" style="cursor: pointer" class="ms-3"
+    ><i class="fas fa-paper-plane"></i
+  ></a>
+</div>

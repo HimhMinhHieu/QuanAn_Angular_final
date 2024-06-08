@@ -20,7 +20,7 @@ import polyline from '@mapbox/polyline';
 import GoongGeocoder from '@goongmaps/goong-geocoder';
 
 const baseClient = goongClient({
-  accessToken: `qC4PYlzc2uRftpn5bvwCitxhShAqfmunT4QNduMk`,
+  accessToken: `vkNM6HYVClNhJ1fdirF6j4MLyLAqyqaM3WcW0KPj`,
 });
 const directionService = goongDirections(baseClient);
 
@@ -227,7 +227,7 @@ export class CartComponent implements OnInit {
       })
       .render(this.paypalElement.nativeElement);
 
-    goongjs.accessToken = 'IaGefUsaQiWrsd3NdHuw3gPAXddl7DSF9EKJVs8E';
+    goongjs.accessToken = 'BMO1nuDvKedhPhgswGHElsC734MXtCUWHbKgh8Kt';
     this.map = new goongjs.Map({
       container: 'map1',
       style: 'https://tiles.goong.io/assets/navigation_day.json',
@@ -236,7 +236,7 @@ export class CartComponent implements OnInit {
     });
 
     var geocoder = new GoongGeocoder({
-      accessToken: 'qC4PYlzc2uRftpn5bvwCitxhShAqfmunT4QNduMk',
+      accessToken: 'vkNM6HYVClNhJ1fdirF6j4MLyLAqyqaM3WcW0KPj',
       placeholder: 'Giao hàng tại...',
     });
     geocoder.addTo('#geocoder');
@@ -410,10 +410,10 @@ export class CartComponent implements OnInit {
       try {
         const [originRes, destRes] = await Promise.all([
           axios.get(
-            `${this.url}=123/12 Võ Văn Tần&api_key=qC4PYlzc2uRftpn5bvwCitxhShAqfmunT4QNduMk`
+            `${this.url}=123/12 Võ Văn Tần&api_key=vkNM6HYVClNhJ1fdirF6j4MLyLAqyqaM3WcW0KPj`
           ),
           axios.get(
-            `${this.url}=${this.endPoint}&api_key=qC4PYlzc2uRftpn5bvwCitxhShAqfmunT4QNduMk`
+            `${this.url}=${this.endPoint}&api_key=vkNM6HYVClNhJ1fdirF6j4MLyLAqyqaM3WcW0KPj`
           ),
         ]);
         const origin = originRes.data.results[0].geometry.location;

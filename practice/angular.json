@@ -31,7 +31,8 @@
               "node_modules/mdb-ui-kit/css/mdb.min.css",
               "node_modules/intro.js/introjs.css",
               "node_modules/intro.js/themes/introjs-modern.css",
-              "node_modules/sweetalert2/dist/sweetalert2.min.css"
+              "node_modules/sweetalert2/dist/sweetalert2.min.css",
+              "node_modules/@ctrl/ngx-emoji-mart/picker.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js",

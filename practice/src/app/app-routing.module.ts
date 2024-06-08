@@ -23,6 +23,7 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
 import { OwnerComponent } from './component/owner/owner.component';
 import { AuthguardService } from './Config/authguard.service';
 import { CanActivateOwner } from './Config/authOwner.guard';
+import { ChatComponent } from './component/chat/chat.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path: ':storeId/comments', component: DanhGiaComponent},
   {path: 'chatbot', component: ChatbotComponent},
   {path: 'owner', component: OwnerComponent, canActivate: [CanActivateOwner]},
+  {path: 'chat', component: ChatComponent},
   {path: '**', component: Page404Component},
 ];
 

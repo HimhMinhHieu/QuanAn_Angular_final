@@ -15,7 +15,7 @@ export class FooterComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     let data = await this.API.getASYNC(endpointsAuth.chiNhanh_detail(4));
     this.chinhanh = data;
-    goongjs.accessToken = 'ZBW8jY63phmmYWvI3ZazY3g95Gb8CejAVA9yhXm3';
+    goongjs.accessToken = 'IaGefUsaQiWrsd3NdHuw3gPAXddl7DSF9EKJVs8E';
     var map = new goongjs.Map({
       container: 'map',
       style: 'https://tiles.goong.io/assets/navigation_day.json',

@@ -1,0 +1,40 @@
+#chat3 .form-control {
+  border-color: transparent;
+}
+
+#chat3 .form-control:focus {
+  border-color: transparent;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.badge-dot {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  margin-left: 2.9rem;
+  margin-top: -.75rem;
+}
+
+.scroll-tips {
+  overflow: auto;
+  height: 400px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.emoji-mart {
+  opacity: 0.2  5;
+  transition: 0.2s ease-in-out;
+}
+
+.emoji-mart:hover {
+  opacity: 1;
+  transition: 0.2s ease-in-out;
+}
+
+.emoji-pos {
+  position: absolute;
+  top: 0;
+  right: 100px;
+  z-index: 99;
+}

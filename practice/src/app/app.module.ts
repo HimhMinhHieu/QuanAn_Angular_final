@@ -1,4 +1,3 @@
-
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -50,15 +49,24 @@ import {
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
 import { OwnerComponent } from './component/owner/owner.component';
-import { TabsModule } from "ngx-bootstrap/tabs";
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { TableDetailComponent } from './component/owner/TableDetail/table-detail/table-detail.component'
+import { TableDetailComponent } from './component/owner/TableDetail/table-detail/table-detail.component';
 import { ChartComponent } from './component/owner/Chart/chart/chart.component';
 import { ChartModule } from 'angular-highcharts';
 import { ChartMonthComponent } from './component/owner/Chart/chart-month/chart-month.component';
 import { CharMonthYearComponent } from './component/owner/Chart/char-month-year/char-month-year.component';
 import { ChartCommentComponent } from './component/owner/Chart/chart-comment/chart-comment.component';
 import { DetailChartCommentComponent } from './component/owner/Chart/chart-comment/detail-chart-comment/detail-chart-comment.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { ChatComponent } from './component/chat/chat.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { SingleChatComponent } from './component/chat/singleChat/single-chat/single-chat.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { BuubleChatComponent } from './component/buuble-chat/buuble-chat.component';
 // import { metaReducers, reducers } from './Reducer/Global';
 
 @NgModule({
@@ -94,10 +102,28 @@ import { DetailChartCommentComponent } from './component/owner/Chart/chart-comme
     CharMonthYearComponent,
     ChartCommentComponent,
     DetailChartCommentComponent,
+    ChatComponent,
+    SingleChatComponent,
+    BuubleChatComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PickerModule,
+    // provideFirebaseApp(() =>
+    //   initializeApp({
+    //     projectId: 'angularchatapp-9bac8',
+    //     appId: '1:963489551945:web:396f47bc73be2f55e09198',
+    //     storageBucket: 'angularchatapp-9bac8.appspot.com',
+    //     apiKey: 'AIzaSyDNkQ2JWo-d9Z-_dyMjtGftZ7TG1V79fbw',
+    //     authDomain: 'angularchatapp-9bac8.firebaseapp.com',
+    //     messagingSenderId: '963489551945',
+    //     measurementId: 'G-WKVH1WDGSR',
+    //   })
+    // ),
+    // provideFirestore(() => getFirestore()),
+    // provideDatabase(() => getDatabase()),
+
     ReactiveFormsModule,
     HttpClientModule,
     // StoreModule.forRoot({counter: CounterReducer, auth: authReducer}),
@@ -110,7 +136,17 @@ import { DetailChartCommentComponent } from './component/owner/Chart/chart-comme
     TabsModule.forRoot(),
     ChartModule,
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp({
+      projectId: 'angularchatapp-9bac8',
+      appId: '1:963489551945:web:396f47bc73be2f55e09198',
+      storageBucket: 'angularchatapp-9bac8.appspot.com',
+      apiKey: 'AIzaSyDNkQ2JWo-d9Z-_dyMjtGftZ7TG1V79fbw',
+      authDomain: 'angularchatapp-9bac8.firebaseapp.com',
+      messagingSenderId: '963489551945',
+      measurementId: 'G-WKVH1WDGSR',
+    }),
+
   ],
   providers: [
     CookieService,
@@ -142,6 +178,19 @@ import { DetailChartCommentComponent } from './component/owner/Chart/chart-comme
         },
       } as SocialAuthServiceConfig,
     },
+    provideFirebaseApp(() =>
+      initializeApp({
+        projectId: 'angularchatapp-9bac8',
+        appId: '1:963489551945:web:396f47bc73be2f55e09198',
+        storageBucket: 'angularchatapp-9bac8.appspot.com',
+        apiKey: 'AIzaSyDNkQ2JWo-d9Z-_dyMjtGftZ7TG1V79fbw',
+        authDomain: 'angularchatapp-9bac8.firebaseapp.com',
+        messagingSenderId: '963489551945',
+        measurementId: 'G-WKVH1WDGSR',
+      })
+    ),
+    provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
   ],
   bootstrap: [AppComponent],
 })
