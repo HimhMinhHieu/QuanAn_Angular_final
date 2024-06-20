@@ -20,7 +20,7 @@ export const endpoints = {
   add_food: `${SERVER}${SERVER_CONTEXT}/api/food/addfood/`,
   login: `${SERVER}${SERVER_CONTEXT}/api/login/`,
   register: `${SERVER}${SERVER_CONTEXT}/api/dangky/`,
-
+  payOff: `${SERVER}${SERVER_CONTEXT}/api/payoffline/`,
 
   forgotPass: `${SERVER}${SERVER_CONTEXT}/api/quenmatkhau/`,
   googleSignIn: `${SERVER}${SERVER_CONTEXT}/api/login/google/`,

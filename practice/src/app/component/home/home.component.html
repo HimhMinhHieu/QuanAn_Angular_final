@@ -23,14 +23,14 @@
 </ng-template>
 
 <!--Main layout-->
-<ng-container *ngIf="user.vaiTro === 'ban'">
+<!-- <ng-container *ngIf="user.vaiTro === 'ban'">
   <app-chon-ban />
-</ng-container>
-<ng-container *ngIf="user.vaiTro !== 'ban'">
-  <main class="mt-5">
-    <div class="container">
+</ng-container> -->
+<ng-container>
+  <main style="width: 100vw;" class="mt-5">
+    <div style="display: flex; flex-wrap: wrap; max-width: 100vw; justify-content: center;" class="container">
       <!--Section: Content-->
-      <section>
+      <section style="flex-basis: 70%;">
         <div class="row">
           <h4 class="mb-5 text-center">
             <strong>GIỚI THIỆU</strong>
@@ -45,7 +45,7 @@
                 src="https://mdbootstrap.com/img/new/slides/031.jpg"
                 class="img-fluid"
               />
-              <a href="#!">
+              <a>
                 <div
                   class="mask"
                   style="background-color: rgba(251, 251, 251, 0.15)"
@@ -78,21 +78,16 @@
 
       <hr class="my-5" />
 
-      <section *ngIf="huser === true" class="text-center">
+      <section style="flex-basis: 100%;" *ngIf="huser === true" class="text-center">
         <h4 class="mb-5">
           <strong>MÓN ĂN GỢI Ý</strong>
           <hr class="hr hr-blurry" />
         </h4>
-        <div class="card">
-          <div class="card-body">
-            <app-chatbot></app-chatbot>
-          </div>
-        </div>
 
-
+        <app-chatbot style="flex-basis: 100vw;"></app-chatbot>
       </section>
       <!--Section: Content-->
-      <section class="text-center mt-5">
+      <section style="flex-basis: 70%;" class="text-center mt-5">
         <h4 class="mb-5">
           <strong>MENU</strong>
           <hr class="hr hr-blurry" />
@@ -129,10 +124,11 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">{{ f.name }}</h5>
-                  <p class="card-text">
-                    {{ f.price }} VND
-                  </p>
-                  <button (click)="addCart(f)" class="btn btn-success me-2 button-order">
+                  <p class="card-text">{{ f.price }} VND</p>
+                  <button
+                    (click)="addCart(f)"
+                    class="btn btn-success me-2 button-order"
+                  >
                     <span> Đặt món </span>
                     <i class="fa-solid fa-cart-plus icon-cart"></i>
                   </button>
@@ -171,7 +167,6 @@
                         class="btn-close"
                         data-bs-dismiss="modal"
                         aria-label="Close"
-
                       ></button>
                     </div>
                     <div class="modal-body">
@@ -250,7 +245,10 @@
                             </section>
                           </div>
                           <div class="vr vr-blurry" style="height: auto"></div>
-                          <div *ngIf="loadingComment === false;else load" class="col-sm">
+                          <div
+                            *ngIf="loadingComment === false; else load"
+                            class="col-sm"
+                          >
                             <div class="container commentScroll">
                               <div class="be-comment-block">
                                 <!-- <h1 class="comments-title">Comments</h1> -->

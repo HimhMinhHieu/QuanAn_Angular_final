@@ -1,0 +1,52 @@
+<ng-container *ngIf="loading === true">
+  <app-my-spinner />
+</ng-container>
+
+<ng-container *ngIf="loading === false">
+  <div style="display: flex; flex-direction: column; row-gap: 2em;">
+    <button (click)="Back()" class="cssbuttons-io-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          fill="#A9A9A9"
+          d="M267.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160L64 241V96c0-17.7-14.3-32-32-32S0 78.3 0 96V416c0 17.7 14.3 32 32 32s32-14.3 32-32V271l11.5 9.6 192 160z"
+        />
+      </svg>
+    </button>
+    <div class="container" style="flex-direction: column">
+      <div
+        @showAnimate
+        *ngFor="
+          let key of Object.keys(carts_images.cart.carts)
+            | paginate : { itemsPerPage: 6, currentPage: p }
+        "
+        class="card"
+      >
+        <div @showAnimate class="card-img">
+          <img
+            style="width: 100%"
+            src="{{ carts_images.cart.carts[key].image }}"
+            class="rounded"
+          />
+        </div>
+        <div @showAnimate class="card-info">
+          <p class="text-title">{{ carts_images.cart.carts[key].name }}</p>
+          <p class="text-body">Số Lượng: {{ carts_images.cart.carts[key].soLuong }}</p>
+        </div>
+        <div @showAnimate class="card-footer">
+          <span class="text-title">{{ carts_images.cart.carts[key].donGia }} VND</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-offline">
+      <pagination-controls
+        class="pagination-spreads"
+        [autoHide]="true"
+        [responsive]="true"
+        previousLabel=""
+        nextLabel=""
+        (pageChange)="pageChanged($event)"
+      ></pagination-controls>
+    </div>
+  </div>
+</ng-container>

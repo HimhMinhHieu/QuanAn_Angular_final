@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
               this.cookie.set('user', JSON.stringify(data));
               this.store.dispatch(loginState.login({ user: data }));
 
-              console.log(this.cookie.check('user'));
+              // console.log(this.cookie.check('user'));
 
               Swal.fire({
                 icon: 'success',

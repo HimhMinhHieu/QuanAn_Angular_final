@@ -23,7 +23,7 @@
 }
 
 #check:checked~.chat-btn .comment {
-  display: none
+  display: none !important;
 }
 
 .chat-btn i {
@@ -51,14 +51,15 @@
   width: 400px;
   background-color: #fff;
   border-radius: 10px 10px 0 0;
-  opacity: 0;
+  display: none;
   transition: all 0.4s;
   z-index: 100;
   border: #DEB887 solid;
 }
 
 #check:checked~.wrapper {
-  opacity: 1
+  opacity: 1;
+  display: inline;
 }
 
 .header {

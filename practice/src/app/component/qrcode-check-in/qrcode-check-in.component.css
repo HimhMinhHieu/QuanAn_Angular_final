@@ -1,0 +1,118 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: nowrap; */
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 80vw;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.inputBox {
+  /* flex-basis: 50%; */
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.inputBox input {
+  padding: 15px 20px;
+  outline: none;
+  background: transparent;
+  border-radius: 5px;
+  color: #212121;
+  border: 1px solid#212121;
+  font-size: 1em;
+  width: 100%;
+  background-color: #fff9d9;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  font-size: 0.7em;
+  transform: translateX(14px) translateY(-7.5px);
+  padding: 0 6px 1px 5px;
+  border-radius: 2px;
+  background-image: linear-gradient( #ffdb19,  #ffd700);
+  letter-spacing: 1px;
+  border: 1px solid #212121;
+  color: #212121;
+}
+
+.inputBoxEmail {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.inputBoxEmail input {
+  padding: 15px 20px;
+  outline: none;
+  background: transparent;
+  border-radius: 5px;
+  color: #212121;
+  border: 1px solid#212121;
+  font-size: 1em;
+  width: 81%;
+  background-color: #fff9d9;
+}
+
+.inputBoxEmail .span-absolute {
+  position: absolute;
+  left: 0;
+  font-size: 0.7em;
+  transform: translateX(14px) translateY(-7.5px);
+  padding: 0 6px 1px 5px;
+  border-radius: 2px;
+  background-image: linear-gradient( #ffdb19,  #ffd700);
+  letter-spacing: 1px;
+  border: 1px solid #212121;
+  color: #212121;
+}
+
+button {
+  margin-top: 40px;
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-image: linear-gradient( #ffdb19,  #ffd700);
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #23c483;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+.inputBoxEmail .span {
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 30px;
+  line-height: 25px;
+  color: #6b7385;
+  /* background: #d4def5; */
+  /* border: 1px solid #CDD9ED; */
+  font-weight: bold;
+  transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
+  height: 100%;
+}

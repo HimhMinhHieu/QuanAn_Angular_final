@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
+import { ApiService, endpoints } from 'src/app/Config/api.service';
 import { AuthApiService, endpointsAuth } from 'src/app/Config/auth-api.service';
 import { decrement, update } from 'src/app/Reducer/MyCartCounterState/counter.actions';
 import { MyCartService } from 'src/app/Service/my-cart.service';
@@ -13,6 +14,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cart-off.component.css']
 })
 export class CartOffComponent implements OnInit {
+  api = inject(ApiService)
+
   carts!: any;
   hcarts!:any;
   idBan!: any;
@@ -48,7 +51,7 @@ export class CartOffComponent implements OnInit {
   pay()
   {
     console.log(JSON.stringify(this.carts))
-    this.authApi.post(endpointsAuth.payOff, this.carts).subscribe((res) => {
+    this.api.post(endpoints.payOff, this.carts).subscribe((res) => {
       this.carts = null
       this.cookie.delete('cartOff')
       this.store.dispatch(update({payload: 0}))

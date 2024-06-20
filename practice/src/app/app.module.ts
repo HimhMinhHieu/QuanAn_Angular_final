@@ -67,6 +67,19 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { SingleChatComponent } from './component/chat/singleChat/single-chat/single-chat.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { BuubleChatComponent } from './component/buuble-chat/buuble-chat.component';
+import { MainAppAngularComponent } from './component/main-app-angular/main-app-angular.component';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FoodOffDetailComponent } from './component/food-off-detail/food-off-detail.component';
+import { NewCartOffComponent } from './component/new-cart-off/new-cart-off.component';
+import { OfferOfflineComponent } from './component/offer-offline/offer-offline.component';
+import { DetailOfferComponent } from './component/offer-offline/detail-offer/detail-offer.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { QRCodeSelectComponent } from './component/qrcode-select/qrcode-select.component';
+import { QRCodeCheckInComponent } from './component/qrcode-check-in/qrcode-check-in.component';
+import { ThankYouComponent } from './component/thank-you/thank-you.component';
+
 // import { metaReducers, reducers } from './Reducer/Global';
 
 @NgModule({
@@ -105,9 +118,19 @@ import { BuubleChatComponent } from './component/buuble-chat/buuble-chat.compone
     ChatComponent,
     SingleChatComponent,
     BuubleChatComponent,
+    MainAppAngularComponent,
+    FoodOffDetailComponent,
+    NewCartOffComponent,
+    OfferOfflineComponent,
+    DetailOfferComponent,
+    PaymentComponent,
+    QRCodeSelectComponent,
+    QRCodeCheckInComponent,
+    ThankYouComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     PickerModule,
     // provideFirebaseApp(() =>
@@ -146,7 +169,8 @@ import { BuubleChatComponent } from './component/buuble-chat/buuble-chat.compone
       messagingSenderId: '963489551945',
       measurementId: 'G-WKVH1WDGSR',
     }),
-
+    RouterModule,
+    QRCodeModule
   ],
   providers: [
     CookieService,

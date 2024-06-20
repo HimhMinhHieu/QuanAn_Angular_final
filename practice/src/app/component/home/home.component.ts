@@ -166,8 +166,8 @@ export class HomeComponent implements OnInit {
   addCartDetail(product: any) {
     this.store.dispatch(increment({ payload: this.quantity }));
 
-    console.log(product.image);
-    console.log(this.quantity);
+    // console.log(product.image);
+    // console.log(this.quantity);
     if (this.carts !== null) {
       if (product.id in this.carts) {
         this.carts[product.id].soLuong += this.quantity;

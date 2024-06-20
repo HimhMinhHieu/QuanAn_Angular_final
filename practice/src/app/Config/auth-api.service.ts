@@ -10,7 +10,7 @@ export const endpointsAuth = {
   currentUser: `${SERVER}${SERVER_CONTEXT}/api/current-user/`,
   pay: `${SERVER}${SERVER_CONTEXT}/api/pay/`,
   datban: `${SERVER}${SERVER_CONTEXT}/api/datban/`,
-  payOff: `${SERVER}${SERVER_CONTEXT}/api/payoffline/`,
+
   changePassword: `${SERVER}${SERVER_CONTEXT}/api/doimatkhau/`,
   comments: (storeId: any) =>
     `${SERVER}${SERVER_CONTEXT}/api/stores/${storeId}/comments/`,

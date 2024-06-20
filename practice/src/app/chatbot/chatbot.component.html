@@ -13,7 +13,7 @@
 </head> -->
 <!-- Button trigger modal -->
 
-<ng-template #load>
+<!-- <ng-template #load>
   <app-my-spinner></app-my-spinner>
 </ng-template>
 
@@ -47,6 +47,67 @@
       <i class="fa fa-arrow-up"></i>
     </button>
   </div>
-</div>
+</div> -->
 
+<body [style]="backgroundFood">
+  <ng-container *ngIf="loading === true"><app-my-spinner /></ng-container>
 
+  <div *ngIf="loading === false" style="flex-direction: column">
+    <div class="container">
+      <div
+        [@showAnimate]
+        (mouseleave)="mouseOutImage()"
+        *ngFor="let f of dataFoodRecommend | paginate : { itemsPerPage: 3, currentPage: p }"
+        class="card"
+      >
+        <img (mouseenter)="mouseInImage($event.target)" src="{{ f.image }}" />
+        <div class="card__head">{{ f.name }}</div>
+        <div class="card_body" style="flex-direction: column">
+          <h2>{{ f.name }}</h2>
+          <h5 class="fs-5 mb-2 mt-2 text-start">Description</h5>
+          <p class="lead text-start anyClass">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
+            at
+          </p>
+          <div class="d-flex justify-content-start">
+            <input
+              (change)="onChangeQuan(quan.value)"
+              class="form-control text-center me-3"
+              id="inputQuantity"
+              type="num"
+              [value]="quantity"
+              #quan
+              style="max-width: 3rem"
+            />
+            <span (click)="onPlus()" class="plus bg-dark me-3">+</span>
+            <span (click)="onMinus()" class="minus bg-dark me-3">-</span>
+
+            <!-- <button
+                (click)="addCart(food)"
+                class="btn btn-outline-dark flex-shrink-0"
+                type="button"
+              >
+                <i class="bi-cart-fill me-1"></i>
+                Add to cart
+              </button> -->
+            <button type="button" class="btn btn-warning">
+              <div>
+                <i class="fa-solid fa-utensils"></i>
+                <p style="margin-left: 1rem">Đặt món</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <pagination-controls
+      class="pagination-spreads"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel=""
+      nextLabel=""
+      (pageChange)="pageChanged($event)"
+    ></pagination-controls>
+  </div>
+</body>

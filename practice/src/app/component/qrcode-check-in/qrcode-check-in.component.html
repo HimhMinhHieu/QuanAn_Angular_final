@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="inputBox">
+    <input (change)="changeName($event)" placeholder="Tên Của Bạn..." type="text" required="" />
+    <span>Tên Của Bạn :</span>
+  </div>
+  <div class="inputBoxEmail">
+    <input (change)="changeEmail($event)" placeholder="Email Của Bạn..." type="email" required="" />
+    <span class="span-absolute">Email Của Bạn :</span>
+    <span class="span">@gmail.com</span>
+  </div>
+  <button (click)="checkIn()">CHECK-IN</button>
+</div>

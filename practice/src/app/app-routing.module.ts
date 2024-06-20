@@ -24,37 +24,62 @@ import { OwnerComponent } from './component/owner/owner.component';
 import { AuthguardService } from './Config/authguard.service';
 import { CanActivateOwner } from './Config/authOwner.guard';
 import { ChatComponent } from './component/chat/chat.component';
+import { MainAppAngularComponent } from './component/main-app-angular/main-app-angular.component';
+import { FoodOffDetailComponent } from './component/food-off-detail/food-off-detail.component';
+import { animation } from '@angular/animations';
+import { NewCartOffComponent } from './component/new-cart-off/new-cart-off.component';
+import { OfferOfflineComponent } from './component/offer-offline/offer-offline.component';
+import { DetailOfferComponent } from './component/offer-offline/detail-offer/detail-offer.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { QRCodeSelectComponent } from './component/qrcode-select/qrcode-select.component';
+import { QRCodeCheckInComponent } from './component/qrcode-check-in/qrcode-check-in.component';
+import { CanActivateCheckin } from './Config/checkIn';
+import { ThankYouComponent } from './component/thank-you/thank-you.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'login', component: LoginComponent, canActivate: [CanActivateLogged]},
-  {path: 'register', component: SignupComponent, canActivate: [CanActivateLogged]},
-  {path: 'cart', component: CartComponent},
-  {path: 'datban/:idChiNhanh', component: DatbanComponent, canActivate: [AuthguardService]},
-  {path: 'datban/:idChiNhanh/ban/:idBan', component: FormDatBanComponent, canActivate: [AuthguardService]},
-  {path: 'chonban', component: ChonBanComponent},
-  {path: 'chonban/:idBan', component: DatmonOfflineComponent},
-  {path: 'cartoff', component: CartOffComponent},
-  {path: 'introduce', component: IntroduceComponent},
-  {path: 'menu', component: MenuComponent},
-  {path: 'menu/:idFood', component: FoodDetailComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'forgot', component: ForgotPasswordComponent},
-  {path: 'changepw', component: ChangePasswordComponent},
-  {path: 'detail', component: ThongTinCaNhanComponent},
-  {path: ':storeId/comments', component: DanhGiaComponent},
-  {path: 'chatbot', component: ChatbotComponent},
-  {path: 'owner', component: OwnerComponent, canActivate: [CanActivateOwner]},
-  {path: 'chat', component: ChatComponent},
-  {path: '**', component: Page404Component},
+  {path: '', component: MainAppAngularComponent, children: [
+    {path: '', redirectTo: '/home', title: "Welcome to Nhoam-Nhoam",pathMatch: 'full' },
+    {path: 'home', component: HomeComponent, title: "Welcome to Nhoam-Nhoam"},
+    {path: 'login', component: LoginComponent, title: "Login", canActivate: [CanActivateLogged]},
+    {path: 'register', component: SignupComponent, title: "Sign Up", canActivate: [CanActivateLogged]},
+    {path: 'cart', component: CartComponent, title: "Cart"},
+    {path: 'datban/:idChiNhanh', component: DatbanComponent, canActivate: [AuthguardService]},
+    {path: 'datban/:idChiNhanh/ban/:idBan', component: FormDatBanComponent, canActivate: [AuthguardService]},
+    {path: 'chonban', component: ChonBanComponent},
+
+    {path: 'cartoff', component: CartOffComponent},
+    {path: 'introduce', component: IntroduceComponent, title: "Introduce"},
+    {path: 'menu', component: MenuComponent, title: "Menu"},
+    {path: 'menu/:idFood', component: FoodDetailComponent},
+    {path: 'contact', component: ContactComponent, title: "Contact"},
+    {path: 'forgot', component: ForgotPasswordComponent, title: "Forgot Password"},
+    {path: 'changepw', component: ChangePasswordComponent, title: "Change Password"},
+    {path: 'detail', component: ThongTinCaNhanComponent, title: "Information"},
+    {path: ':storeId/comments', component: DanhGiaComponent},
+    {path: 'chatbot', component: ChatbotComponent},
+    {path: 'owner', component: OwnerComponent, title: "Owner", canActivate: [CanActivateOwner]},
+    {path: 'chat', component: ChatComponent, title: "Chat"},
+
+  ]},
+  {path: 'ban/:idBan/QRCode', component: QRCodeSelectComponent, data: {animation: 'QRCode'}},
+  {path: 'ban/:idBan/CheckIn', component: QRCodeCheckInComponent, data: {animation: 'CheckIn'}},
+  {path: 'ban/:idBan', component: DatmonOfflineComponent, data: {animation: 'test'}},
+  {path: 'ban/:idBan/food/:idFood', component: FoodOffDetailComponent, data: {animation: 'FoodDetailPageOff'}},
+  {path: 'ban/:idBan/cartoffpay', component: NewCartOffComponent, data: {animation: 'CartOff'}},
+  {path: 'ban/:idBan/offer', component: OfferOfflineComponent, data: {animation: 'OfferOffline'}},
+  {path: 'ban/:idBan/offer/offer-detail', component: DetailOfferComponent, data: {animation: 'OfferDetail'}},
+  {path: 'ban/:idBan/payment', component: PaymentComponent, title: "Bill", data: {animation: "Billing"}},
+  {path: 'thankyou', component: ThankYouComponent, title: 'Thank You', data: {animation: 'ThankYou'}},
+  {path: '**', component: Page404Component, title: "404 Error"},
+
 ];
 
 const routerOptions: ExtraOptions = {
   useHash: false,
   anchorScrolling: 'enabled',
-  onSameUrlNavigation: 'reload'
+  onSameUrlNavigation: 'reload',
+  scrollPositionRestoration: 'enabled'
   // ...any other options you'd like to use
 };
 
