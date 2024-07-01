@@ -1,0 +1,231 @@
+<header>
+  <div class="container">
+    <div style="cursor: pointer;" [routerLink]="['/home']" class="left">
+      <img
+        src="https://platri.de/wp-content/uploads/2024/01/Angular-Framework-e1649312852136.png"
+        alt="logo-nhoam"
+      />
+      <h1>NHOAM-NHOAM</h1>
+    </div>
+    <div class="mid">
+      <p [routerLink]="['/home']" routerLinkActive="active-link">Home</p>
+      <p [routerLink]="['/datban/', chiNhanh]" routerLinkActive="active-link">Book Table</p>
+      <p [routerLink]="['/menupreview']"  routerLinkActive="active-link">Menu</p>
+      <p [routerLink]="['/menu']" routerLinkActive="active-link">Order Online</p>
+      <p [routerLink]="['/contact']" routerLinkActive="active-link">Contact Us</p>
+      <p *ngIf="(user$ | async)?.isLogged === true" [routerLink]="['4/comments']" routerLinkActive="active-link">Rating</p>
+      <p
+        *ngIf="(user$ | async)?.isLogged === false"
+        [routerLink]="['/login']"
+        routerLinkActive="active-link"
+      >
+        Login
+      </p>
+      <p
+        *ngIf="(user$ | async)?.isLogged === false"
+        [routerLink]="['/register']"
+        routerLinkActive="active-link"
+      >
+        Sign-up
+      </p>
+    </div>
+    <div class="right">
+      <div class="social-icon">
+        <a class="nav-link" href="#" rel="nofollow">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a
+          class="nav-link"
+          href="https://www.facebook.com/profile.php?id=100012229116926"
+          rel="nofollow"
+          target="_blank"
+        >
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a class="nav-link" href="#" rel="nofollow">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a
+          class="nav-link"
+          href="https://github.com/HimhMinhHieu"
+          rel="nofollow"
+          target="_blank"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div *ngIf="(user$ | async)?.isLogged === true" class="user-display">
+        <img
+          (click)="showInfo()"
+          class="rounded-circle img-avatar"
+          src="{{ (user$ | async)?.user.avatar }}"
+          alt="user-avatar"
+        />
+        <div [ngClass]="{ show: open }" class="user-func">
+          <div class="info-user">
+            <img
+              class="rounded-circle"
+              src="{{ (user$ | async)?.user.avatar }}"
+              alt="user-avatar"
+            />
+            <p style="margin-left: 1%; margin-right: 1%">
+              {{ (user$ | async)?.user.email }}
+            </p>
+          </div>
+          <hr class="hr hr-blurry" />
+          <a
+            class="dropdown-item"
+            [routerLink]="['/detail']"
+            routerLinkActive="router-link-active"
+            >Thông Tin Cá Nhân</a
+          >
+          <a
+            *ngIf="(user$ | async)?.user.vaiTro == 'OWNER'"
+            class="dropdown-item"
+            [routerLink]="['/owner']"
+            routerLinkActive="router-link-active"
+            >Thông Tin Cửa Hàng</a
+          >
+          <a
+            class="dropdown-item"
+            [routerLink]="['/changepw']"
+            routerLinkActive="router-link-active"
+            >Đổi mật khẩu</a
+          >
+          <a
+            class="dropdown-item"
+            [routerLink]="['/chat']"
+            routerLinkActive="router-link-active"
+            >Chat</a
+          >
+          <hr class="hr hr-blurry" />
+          <a (click)="logout()" class="dropdown-item logout-btn">
+            <span>Log out </span><i class="fa-solid fa-right-from-bracket"></i>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="(user$ | async)?.isLogged === true" class="cart">
+        <i [routerLink]="['/cart']" routerLinkActive="active-link" class="fa-solid fa-bag-shopping" style="color: #ffffff"></i>
+        <span class="badge">{{counterdisplay}}</span>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{'showScroll': showScroll}" class="container-scroll">
+    <div class="first-half">
+      <img
+        tooltip="NHOAM-NHOAM"
+        placement="right"
+        src="https://platri.de/wp-content/uploads/2024/01/Angular-Framework-e1649312852136.png"
+        alt="logo-nhoam"
+        [routerLink]="['/home']"
+      />
+      <a class="con-tooltip" data-toggle="tooltip" data-placement="right" title="NHOAM-NHOAM"
+        [routerLink]="['/home']"
+        ><i
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-house"
+        ></i>
+      </a>
+      <a (click)="DatBan()" class="con-tooltip" data-toggle="tooltip" data-placement="right" title="Book Table"
+        ><i
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-receipt"
+        ></i
+      ></a>
+      <a class="con-tooltip" data-toggle="tooltip" data-placement="right" title="Order Online"
+        ><i [routerLink]="['/menu']"
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-utensils"
+        ></i
+      ></a>
+      <a class="con-tooltip" data-toggle="tooltip" data-placement="right" title="Menu"
+        ><i [routerLink]="['/menupreview']"
+          routerLinkActive="active-link"
+          class="fa-solid fa-bowl-food"
+        ></i
+      ></a>
+      <a class="con-tooltip" data-toggle="tooltip" data-placement="right" title="Contact Us"
+        ><i [routerLink]="['/contact']"  routerLinkActive="active-link-scroll" class="fa-solid fa-phone"></i
+      ></a>
+      <a
+        *ngIf="(user$ | async)?.isLogged === false"
+        [routerLink]="['/login']"
+        class="con-tooltip"
+        data-toggle="tooltip" data-placement="right" title="Login"
+        ><i
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-user-pen"
+        ></i
+      ></a>
+      <a
+      class="con-tooltip"
+        *ngIf="(user$ | async)?.isLogged === false"
+        [routerLink]="['/register']"
+        data-toggle="tooltip" data-placement="right" title="Sign Up"
+        ><i
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-signature"
+        ></i
+      ></a>
+      <a
+      class="con-tooltip"
+        *ngIf="(user$ | async)?.isLogged === true"
+        [routerLink]="['/detail']"
+        data-toggle="tooltip" data-placement="right" title="Thông tin cá nhân"
+        ><i
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-user-gear"
+        ></i
+      ></a>
+      <a
+      class="con-tooltip"
+        *ngIf="(user$ | async)?.isLogged === true"
+        [routerLink]="['/changepw']"
+        data-toggle="tooltip" data-placement="right" title="Đổi mật khẩu"
+        ><i
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-key"
+        ></i
+      ></a>
+      <a
+      class="con-tooltip"
+        *ngIf="(user$ | async)?.isLogged === true"
+        [routerLink]="['/chat']"
+        data-toggle="tooltip" data-placement="right" title="Chat"
+        ><i
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-comment"
+        ></i
+      ></a>
+      <a
+      class="con-tooltip"
+        *ngIf="(user$ | async)?.isLogged === true"
+        [routerLink]="['/4/comments']"
+        data-toggle="tooltip" data-placement="right" title="Rating"
+        ><i
+          routerLinkActive="active-link-scroll"
+          class="fa-solid fa-star"
+        ></i
+      ></a>
+      <a
+      class="con-tooltip"
+        *ngIf="(user$ | async)?.isLogged === true"
+        (click)="logout()"
+        data-toggle="tooltip" data-placement="right" title="Logout"
+        ><i style="color: red;"
+          class="fa-solid fa-right-from-bracket"
+        ></i
+      ></a>
+    </div>
+    <div class="last-half">
+      <span class="badge">{{counterdisplay}}</span>
+
+      <a style="cursor: pointer;"
+      class="con-tooltip"
+      data-toggle="tooltip" data-placement="right" title="Giỏ Hàng"
+        ><i [routerLink]="['/cart']"
+        routerLinkActive="active-link" class="fa-solid fa-bag-shopping" style="color: #ffffff"></i
+      ></a>
+    </div>
+  </div>
+</header>

@@ -126,18 +126,29 @@ export class NewCartOffComponent implements OnInit {
         // let roomID = uuid.v4();
         // console.warn(roomID);
         // A post entry.
-        const newChatroomRef = push(ref(this.database, 'offer/ban/2'), {
+        const newChatroomRef = push(ref(this.database, `offer/ban/${this.idBan}`), {
           ban: this.idBan,
           cart: {
-            carts: this.carts_images,
-            note: 'Đang phục vụ',
-            done: false,
+            carts: this.carts_images
           },
           note: 'Đang phục vụ',
           done: false,
           createdAt: `${this.today}`,
         });
         const newChatroomId = newChatroomRef.key;
+
+        const newChatroomRefTmp = push(ref(this.database, 'offer/cook'), {
+          offer: newChatroomId,
+          ban: this.idBan,
+          cart: {
+            carts: this.carts_images,
+          },
+          note: 'Đang phục vụ',
+          done: false,
+          createdAt: `${this.today}`,
+        });
+        const newChatroomIdTmp = newChatroomRefTmp.key;
+
         let res = this.apis.postASYNC(endpoints.payOff, this.carts)
         // console.log(new Date())
         // const postData = {

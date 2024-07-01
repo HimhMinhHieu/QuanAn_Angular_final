@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="inside-container">
+    <div class="left"></div>
+    <form [formGroup]="datBanForm" (submit)="datBan($event)" class="right">
+      <div class="right-top">
+        <div class="body">
+          <button
+          type="submit" [disabled]="loading || datBanForm.invalid"
+            class="btn btn-hover"
+          >
+            <span class="btn-text">ĐẶT BÀN NGAY</span>
+          </button>
+        </div>
+        <h1>BÀN SỐ {{idB}}</h1>
+        <p><span>- {{ban.moTa}} -</span></p>
+      </div>
+      <div class="right-mid">
+        <div class="information-user">
+          <i class="fa-solid fa-user-check" style="color: #ffffff"></i>
+          <div class="name-user">
+            <p>{{hoTen}}</p>
+            <p>Tên Người Đặt: {{user.firstName}}</p>
+          </div>
+        </div>
+        <div class="information-date">
+          <i class="fa-solid fa-calendar-check" style="color: #ffffff"></i>
+          <div class="form__group field">
+            <input
+              placeholder="Ngày Đặt Bàn"
+              type="text"
+              onfocus="(this.type='datetime-local')"
+              onblur="(this.type='text')"
+              class="form__field"
+              formControlName=ngayDat
+            />
+            <label for="date" class="form__label">Ngày Đặt Bàn</label>
+          </div>
+          <div class="form__group field">
+            <input
+              placeholder="Ngày Hứa Nhận"
+              type="text"
+              onfocus="(this.type='datetime-local')"
+              onblur="(this.type='text')"
+              class="form__field"
+              formControlName=ngayNhan
+            />
+            <label for="date" class="form__label">Ngày Hứa Nhận</label>
+          </div>
+        </div>
+      </div>
+      <div class="right-foot">
+        <textarea placeholder="Ghi chú vào đây ..." formControlName=moTa></textarea>
+      </div>
+    </form>
+  </div>
+</div>

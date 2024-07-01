@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <div class="class-left-container col-md-8 cart">
+        <div class="title">
+          <div class="item-class">
+            <div>
+              <h4><b>GIỎ HÀNG</b></h4>
+            </div>
+            <div class="align-self-center text-muted">
+              {{ Object.keys(cart_image).length }} Món
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            *ngFor="let key of Object.keys(cart_image)"
+            class="row main align-items-center border-bottom border-top"
+          >
+            <div class="col-2">
+              <img class="img-fluid" src="{{ cart_image[key].image }}" />
+            </div>
+            <div class="col">
+              <div class="row text-muted">{{ cart_image[key].name }}</div>
+              <div class="row">{{ cart_image[key].cate }}</div>
+            </div>
+            <div class="col">
+              <a href="#">-</a
+              ><a href="#" class="border">{{ cart_image[key].soLuong }}</a
+              ><a href="#">+</a>
+            </div>
+            <div class="col last-item-class">
+              <div>{{ cart_image[key].donGia }} VND</div>
+              <div
+                (click)="
+                  deleteItem(cart_image[key]); deleteItemImage(cart_image[key])
+                "
+              >
+                <span class="close"><i class="fa-solid fa-x"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="back-to-shop">
+          <a [routerLink]="['/home']">&leftarrow;</a
+          ><span class="text-muted">Back to shop</span>
+        </div>
+      </div>
+      <div class="col-md-4 summary">
+        <div>
+          <h5><b>Summary</b></h5>
+        </div>
+        <hr />
+        <div class="class-item-sumary">
+          <div style="padding-left: 0">
+            MÓN: {{ Object.keys(cart_image).length }} Món
+          </div>
+          <div>{{ sum }} VND</div>
+        </div>
+        <form>
+          <p>SHIPPING</p>
+          <div id="geocoder"></div>
+          <div id="map1"></div>
+        </form>
+        <div
+          class="class-item-total"
+          style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
+        >
+          <div>TOTAL PRICE</div>
+          <div>{{sum}} VND</div>
+        </div>
+        <div #paypal></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="cart_image === null" class="card-fixed">
+    <h1>KHÔNG CÓ SẢN PHẨM, BẠN HÃY MUA TRƯỚC</h1>
+  </div>
+</div>

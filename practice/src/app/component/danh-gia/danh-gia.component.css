@@ -116,6 +116,8 @@ body{
     border-radius: 2px;
     padding: 50px 70px;
     border:1px solid #ffffff;
+    overflow-y: auto;
+    height: 50vh;
 }
 
 .comments-title {

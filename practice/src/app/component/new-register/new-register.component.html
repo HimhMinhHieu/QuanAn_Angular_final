@@ -1,0 +1,137 @@
+<div style="width: 100vw; height: 100vh; background-color: black; padding-bottom: 2%;">
+  <form
+    [formGroup]="registerForm"
+    (submit)="register($event)"
+    class="container"
+  >
+    <div class="top">
+      <div class="top-left">
+        <ng-container *ngIf="avatar !== null">
+          <img src="{{imgSrc}}" alt="{{avatar?.name}}" class="rounded img-fluid"/>
+        </ng-container>
+
+        <ng-container *ngIf="avatar === null">
+          <label class="custum-file-upload" for="file">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24">
+                <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                <g
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  id="SVGRepo_tracerCarrier"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fill=""
+                    d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+            <div class="text">
+              <span>Click to upload image</span>
+            </div>
+            <input (change)="onFileChange($event)" type="file" id="file" />
+          </label>
+        </ng-container>
+
+      </div>
+      <div class="top-right"></div>
+    </div>
+    <div class="mid">
+      <div class="mid-left">
+        <div class="form__group field">
+          <input
+            type="input"
+            class="form__field"
+            placeholder="First Name"
+            required=""
+            formControlName="firstName"
+          />
+          <label for="firstname" class="form__label">First Name</label>
+        </div>
+        <div class="form__group field">
+          <input
+            type="input"
+            class="form__field"
+            placeholder="Last Name"
+            required=""
+            formControlName="lastName"
+          />
+          <label for="lastname" class="form__label">Last Name</label>
+        </div>
+        <div class="form__group field">
+          <input
+            type="input"
+            class="form__field"
+            placeholder="Username"
+            required=""
+            formControlName="username"
+          />
+          <label for="username" class="form__label">Username</label>
+        </div>
+      </div>
+      <div class="mid-right">
+        <div class="form__group field">
+          <input
+            type="password"
+            class="form__field"
+            placeholder="Password"
+            required=""
+            formControlName="password"
+          />
+          <label for="password" class="form__label">Password</label>
+        </div>
+        <div class="form__group field">
+          <input
+            type="password"
+            class="form__field"
+            placeholder="Confirm Password"
+            required=""
+            formControlName="confirmPass"
+          />
+          <label for="confirm password" class="form__label"
+            >Confirm Password</label
+          >
+        </div>
+        <div class="form__group field">
+          <input
+            type="email"
+            class="form__field"
+            placeholder="Email"
+            required=""
+            formControlName="email"
+          />
+          <label for="email" class="form__label">Email</label>
+        </div>
+        <div class="form__group field">
+          <input
+            type="tel"
+            class="form__field"
+            placeholder="Your Phone Number"
+            required=""
+            formControlName="phone"
+          />
+          <label for="phone" class="form__label">Your Phone Number</label>
+        </div>
+      </div>
+    </div>
+    <div class="bot">
+      <div class="bot-left"></div>
+      <div class="bot-right">
+        <ng-container *ngIf="loading">
+          <app-my-spinner />
+        </ng-container>
+        <ng-container *ngIf="!loading">
+          <div class="body">
+            <button type="submit" [disabled]="loading || registerForm.invalid" class="btn btn-hover">
+              <span class="btn-text">SIGN UP</span>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </form>
+</div>

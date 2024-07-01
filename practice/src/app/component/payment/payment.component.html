@@ -18,38 +18,12 @@
             {{ moment(today).locale("vi").format("YYYY") | titlecase }}
           </h6>
           <h6 class="position">Địa điểm</h6>
-          <h6 class="position">Chi Nhánh Số 2, Thành phố Hồ Chí Minh</h6>
+          <h6 class="position">Chi Nhánh Số 4, Thành phố Hồ Chí Minh</h6>
         </div>
       </div>
       <div class="bill-middle">
         <h3 class="title-text">HÓA ĐƠN</h3>
         <div class="middle-text">
-          <div class="inside-middle">
-            <h5
-              style="
-                font-family: 'Playball', cursive;
-                font-weight: 400;
-                font-style: normal;
-              "
-            >
-              Họ Tên Người Nhận Bàn:
-            </h5>
-            <div>
-              <div>
-                <h5
-                  *ngFor="let key of Object.keys(people)"
-                  style="
-                    font-family: 'Pinyon Script', cursive;
-                    font-weight: 700;
-                    font-style: normal;
-                    font-size: 22px;
-                  "
-                >
-                  {{ people[key].name }}
-                </h5>
-              </div>
-            </div>
-          </div>
           <div class="inside-middle">
             <h5
               style="

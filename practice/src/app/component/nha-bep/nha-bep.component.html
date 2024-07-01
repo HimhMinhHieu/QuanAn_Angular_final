@@ -1,0 +1,76 @@
+<ng-container>
+  <div class="container" style="flex-direction: columns">
+    <div class="title-container">
+      <h1>YÊU CẦU TỪ KHÁCH HÀNG</h1>
+    </div>
+    <div class="content-container">
+      <ng-container *ngIf="loading === true">
+        <app-my-spinner />
+      </ng-container>
+
+      <ng-container *ngIf="loading === false">
+        <div class="sticky-container">
+          <div
+            *ngFor="let key of Object.keys(offer())"
+            class="post-it"
+
+          >
+            <div class="title-sticky">
+              <div class="title">
+                <div>
+                  <h1>BÀN {{ offer()[key].ban }}</h1>
+                </div>
+                <div>
+                  <p>
+                    -
+                    {{ moment(offer()[key].createdAt).locale("vi").fromNow() }}
+                  </p>
+                </div>
+              </div>
+              <div class="accepted">
+                <div (click)="isDone(offer()[key], key)">
+                  <svg
+                    class="check-green"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                  >
+                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                      fill="green"
+                      d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <ul>
+              <li *ngFor="let f of Object.keys(offer()[key].cart.carts)">
+                <div
+                  (click)="doneFood(f, offer()[key].cart.carts[f], key)"
+                  class="li-container"
+                  [ngClass]="{'background-green': offer()[key].cart.carts[f].done}"
+                >
+                  <div>
+                    {{ offer()[key].cart.carts[f].name }}
+                  </div>
+                  <div>x {{ offer()[key].cart.carts[f].soLuong }}</div>
+                  <!-- <div class="strike"></div> -->
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-offline">
+          <pagination-controls
+            class="pagination-spreads"
+            [autoHide]="true"
+            [responsive]="true"
+            previousLabel=""
+            nextLabel=""
+            (pageChange)="pageChanged($event)"
+          ></pagination-controls>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

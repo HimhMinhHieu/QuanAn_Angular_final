@@ -36,13 +36,13 @@ export class OfferOfflineComponent implements OnInit {
   ngOnInit(): void {
     let idBan = parseInt(this.route.snapshot.paramMap.get('idBan') as any);
     this.idBan = idBan;
-    const offerRef = ref(this.database, `offer/ban/2`);
+    const offerRef = ref(this.database, `offer/ban/${idBan}`);
     onValue(offerRef, (snapshot) => {
       if(snapshot.val() !== null) {
         this.loading = false
       const data = snapshot.val();
       this.offer.set(data);
-      console.log(data);
+      // console.log(data);
       } else {
         this.loading = true
       }

@@ -79,6 +79,20 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { QRCodeSelectComponent } from './component/qrcode-select/qrcode-select.component';
 import { QRCodeCheckInComponent } from './component/qrcode-check-in/qrcode-check-in.component';
 import { ThankYouComponent } from './component/thank-you/thank-you.component';
+import { NewMenuComponent } from './component/new-menu/new-menu.component';
+import { NhanVienTucTrucComponent } from './component/nhan-vien-tuc-truc/nhan-vien-tuc-truc.component';
+import { NhaBepComponent } from './component/nha-bep/nha-bep.component';
+import { NewCartOnlineComponent } from './component/new-cart-online/new-cart-online.component';
+import { NewLoginComponent } from './component/new-login/new-login.component';
+import { NewRegisterComponent } from './component/new-register/new-register.component';
+import { NewDatBanOnlineComponent } from './component/new-dat-ban-online/new-dat-ban-online.component';
+import { NewFormDatBanComponent } from './component/new-form-dat-ban/new-form-dat-ban.component';
+import { MenuPreviewComponent } from './component/menu-preview/menu-preview.component';
+import { NgPipesModule } from 'ngx-pipes';
+import { NewHeaderComponent } from './layout/new-header/new-header.component';
+import { NewFooterComponent } from './layout/new-footer/new-footer.component';
+import { NewUserDetailComponent } from './component/new-user-detail/new-user-detail.component';
+import { NewContactUsComponent } from './component/new-contact-us/new-contact-us.component';
 
 // import { metaReducers, reducers } from './Reducer/Global';
 
@@ -127,6 +141,19 @@ import { ThankYouComponent } from './component/thank-you/thank-you.component';
     QRCodeSelectComponent,
     QRCodeCheckInComponent,
     ThankYouComponent,
+    NewMenuComponent,
+    NhanVienTucTrucComponent,
+    NhaBepComponent,
+    NewCartOnlineComponent,
+    NewLoginComponent,
+    NewRegisterComponent,
+    NewDatBanOnlineComponent,
+    NewFormDatBanComponent,
+    MenuPreviewComponent,
+    NewHeaderComponent,
+    NewFooterComponent,
+    NewUserDetailComponent,
+    NewContactUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -170,7 +197,8 @@ import { ThankYouComponent } from './component/thank-you/thank-you.component';
       measurementId: 'G-WKVH1WDGSR',
     }),
     RouterModule,
-    QRCodeModule
+    QRCodeModule,
+    NgPipesModule
   ],
   providers: [
     CookieService,
@@ -194,7 +222,7 @@ import { ThankYouComponent } from './component/thank-you/thank-you.component';
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1464142041188880'),
+            provider: new FacebookLoginProvider('453437157582981'),
           },
         ],
         onError: (err) => {

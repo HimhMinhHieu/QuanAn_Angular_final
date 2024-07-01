@@ -18,12 +18,4 @@
       [width]="400"
     ></qrcode>
   </div>
-  <div class="under-qr">
-    <div *ngIf="people !== null" style="text-align: center;" class="name-attend">
-      <h6 *ngFor="let key of Object.keys(people)">{{people[key].name}}</h6>
-    </div>
-    <div class="button-skip">
-      <button [disabled]="dis" (click)="checkIn()">BẮT ĐẦU ĐẶT MÓN</button>
-    </div>
-  </div>
 </div>

@@ -1,0 +1,91 @@
+<div style="width: 100vw; height: 100vh; background-color: black;">
+  <div class="container">
+    <div class="top"></div>
+    <div class="mid">
+      <form [formGroup]="loginForm" (submit)="onSubmit()" class="in-mid">
+        <div class="form__group field">
+          <input
+            type="input"
+            class="form__field"
+            placeholder="Name"
+            required=""
+            formControlName="taiKhoan"
+          />
+          <label for="username" class="form__label">Username</label>
+        </div>
+        <div class="form__group field">
+          <input
+            type="password"
+            class="form__field"
+            placeholder="Password"
+            required=""
+            formControlName="matKhau"
+          />
+          <label for="password" class="form__label">Password</label>
+        </div>
+        <div class="check-container">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="form1Example3"
+              checked
+            />
+            <label class="form-check-label" for="form1Example3">
+              Remember me
+            </label>
+          </div>
+          <a [routerLink]="['/forgot']" routerLinkActive="router-link-active"
+            >Forgot password?</a
+          >
+        </div>
+        <div class="body">
+          <button
+            type="submit"
+            [disabled]="loginForm.invalid"
+            class="btn btn-hover"
+          >
+            <span class="btn-text">LOGIN</span>
+          </button>
+        </div>
+      </form>
+      <div>
+        <nav class="menu">
+          <input
+            type="checkbox"
+            class="menu-open"
+            name="menu-open"
+            id="menu-open"
+          />
+          <label class="menu-open-button" for="menu-open"> OR </label>
+
+          <!-- <a href="#" class="menu-item blue"> <i class="fa fa-anchor"></i> </a>
+          <a href="#" class="menu-item green"> <i class="fa fa-coffee"></i> </a>
+          <a href="#" class="menu-item red"> <i class="fa fa-heart"></i> </a>
+          <a href="#" class="menu-item purple"> <i class="fa fa-microphone"></i> </a> -->
+          <a class="menu-item orange">
+            <div class="fix-gg">
+              <asl-google-signin-button
+                type="icon"
+                size="large"
+                shape="circle"
+                logo_alignment="center"
+                theme="outline"
+                [width]="400"
+              ></asl-google-signin-button>
+            </div>
+          </a>
+          <a
+            style="cursor: pointer"
+            (click)="signInWithFB()"
+            class="menu-item lightblue"
+          >
+            <i class="fab fa-facebook-f fa-lg mx-3"></i>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="bot"></div>
+  </div>
+</div>

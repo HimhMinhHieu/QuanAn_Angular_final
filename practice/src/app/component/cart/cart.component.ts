@@ -64,7 +64,7 @@ export class CartComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     if (this.cookie.check('cart-foodapp') === true) {
       this.carts = JSON.parse(this.cookie.get('cart-foodapp'));
-      // console.log(this.carts);
+      console.log(this.carts);
     }
 
     for (let c in this.carts) {

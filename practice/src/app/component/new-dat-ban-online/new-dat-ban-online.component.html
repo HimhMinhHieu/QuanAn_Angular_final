@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="slider">
+    <!-- <img class="active" src="https://img.freepik.com/premium-photo/photo-closeup-shot-delicious-food_829042-89.jpg">
+    <img src="https://media.istockphoto.com/id/1307190527/photo/happy-waiter-serving-food-to-group-of-friends-in-a-pub.jpg?s=612x612&w=0&k=20&c=EDqQ0oBcpFGV25p61vWUF5N-6lRJdbmZmQMe5kyuxyA=">
+    <img src="https://cdn.sanity.io/images/pmfmd3fy/production/1890f490a2c058a1610182b8153e5cd6cc5686aa-1996x3000.jpg?w=2048&q=90&auto=format"> -->
+    <div
+      *ngFor="let b of ban"
+      [ngClass]="{ active: firstItem.id === b.id }"
+      class="slider-item active"
+    >
+      <div class="div-back"></div>
+      <div class="div-right">
+        <h1>BÀN SỐ {{ b.id }}</h1>
+        <h4>{{ b.moTa }}</h4>
+        <button (click)="chonBan(b.id)" class="cta">
+          <span class="hover-underline-animation"> Đặt bàn ngay </span>
+          <svg
+            id="arrow-horizontal"
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="10"
+            viewBox="0 0 46 16"
+          >
+            <path fill="#fff"
+              id="Path_10"
+              data-name="Path 10"
+              d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+              transform="translate(30)"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- <div class="slider-item">
+      <div class="div-back"></div>
+      <div class="div-right">
+        <h1>BÀN SỐ 4</h1>
+        <h4>bàn 8 chỗ</h4>
+        <button class="cta">
+          <span class="hover-underline-animation"> Đặt bàn ngay </span>
+          <svg
+            id="arrow-horizontal"
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="10"
+            viewBox="0 0 46 16"
+          >
+            <path
+              id="Path_10"
+              data-name="Path 10"
+              d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+              transform="translate(30)"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div> -->
+  </div>
+  <nav class="slider-nav">
+    <ul class="ul-container">
+      <li class="arrow">
+        <button (click)="showPreviousItem()" class="previous">
+          <span>
+            <i style="color: #fff;" class="fa-solid fa-arrow-left"></i>
+          </span>
+        </button>
+      </li>
+      <li class="arrow">
+        <button (click)="showNextItem()" class="next">
+          <span>
+            <i style="color: #fff;" class="fa-solid fa-arrow-right"></i>
+          </span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

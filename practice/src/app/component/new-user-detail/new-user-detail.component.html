@@ -1,0 +1,69 @@
+<div
+  style="
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    padding-bottom: 2%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  "
+>
+  <div class="container">
+    <div class="top">
+      <div class="top-left">
+        <img src="{{user.avatar}}" alt="user-avatar" class="rounded" />
+      </div>
+      <div class="top-mid"></div>
+      <div class="top-right"></div>
+    </div>
+    <div class="mid">
+      <div class="mid-left">
+        <div class="in-mid-left">
+          <p>ID: </p>
+          <p>{{user.id}}</p>
+        </div>
+        <div class="in-mid-left">
+          <p>First Name: </p>
+          <p>{{user.firstName}}</p>
+        </div>
+        <div class="in-mid-left">
+          <p>Last Name: </p>
+          <p>{{user.lastName}}</p>
+        </div>
+      </div>
+      <div class="mid-mid">
+        <div class="in-mid-left">
+          <p>Username: </p>
+          <p>{{user.taiKhoan}}</p>
+        </div>
+        <div class="in-mid-left">
+          <p>Email: </p>
+          <p>{{user.email}}</p>
+        </div>
+        <div class="in-mid-left">
+          <p>Tel: </p>
+          <p>{{user.phone}}</p>
+        </div>
+      </div>
+      <div class="mid-right">
+        <div class="in-mid-left">
+          <p>Role: </p>
+          <p>{{user.vaiTro}}</p>
+        </div>
+        <div class="in-mid-left">
+          <p>Active: </p>
+          <p>{{user.active}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="bot">
+      <div class="bot-left"></div>
+      <div class="bot-mid"></div>
+      <div class="bot-right"></div>
+    </div>
+  </div>
+</div>

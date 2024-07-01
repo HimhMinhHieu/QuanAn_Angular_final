@@ -139,6 +139,7 @@ export class ChatbotComponent implements OnInit {
   backgroundFood!: any;
   backTmp!: any;
   anim: any = false;
+  cart_image: any = {};
 
   // loading: any = false;
   quantity: number = 1;
@@ -162,6 +163,10 @@ export class ChatbotComponent implements OnInit {
       if (this.cookie.check('cart-foodapp') === true) {
         this.carts = JSON.parse(this.cookie.get('cart-foodapp'));
       }
+
+      if (this.cookie.check('cart-image-foodapp') === true) {
+        this.cart_image = JSON.parse(this.cookie.get('cart-image-foodapp'));
+      }
     this.backgroundFood = `background-image: url(${this.backgroundBody}); background-repeat: no-repeat; background-position: center; background-size: 100% 100%; transition: background-image 1.5s ease-in; background: transparent; width: 100%`;
     // let foodsRes = await this.apis.getASYNC(endpoints.foods);
     // this.foods = foodsRes;
@@ -182,15 +187,18 @@ export class ChatbotComponent implements OnInit {
   onPlus() {
     this.quantity = this.quantity + 1;
     if (this.quantity <= 0) this.quantity = 1;
+    console.log(this.quantity)
   }
 
   onMinus() {
     this.quantity = this.quantity - 1;
     if (this.quantity <= 0) this.quantity = 1;
+    console.log(this.quantity)
   }
 
   onChangeQuan(value: any) {
     this.quantity = parseInt(value);
+    console.log(this.quantity)
   }
 
   mouseInImage(image: any) {
@@ -208,21 +216,34 @@ export class ChatbotComponent implements OnInit {
   }
 
   addCart(product: any) {
-    this.store.dispatch(increment({ payload: this.count }));
-    console.log(product);
-    console.log(product.id);
-    console.log(this.carts);
+    this.store.dispatch(increment({ payload: this.quantity }));
+
     if (product.id in this.carts) {
-      this.carts[product.id].soLuong += 1;
+      this.carts[product.id].soLuong += this.quantity;
     } else {
       this.carts[product.id] = {
         idNguoiDung: this.user.id,
         idThucAn: product.id,
         name: product.name,
-        soLuong: 1,
+        soLuong: this.quantity,
         donGia: product.price,
       };
     }
     this.cookie.set('cart-foodapp', JSON.stringify(this.carts));
+
+    if (product.id in this.cart_image) {
+      this.cart_image[product.id].soLuong += this.quantity;
+    } else {
+      this.cart_image[product.id] = {
+        idNguoiDung: this.user.id,
+        idThucAn: product.id,
+        name: product.name,
+        soLuong: this.quantity,
+        donGia: product.price,
+        image: product.image,
+        cate: product.idLoai,
+      };
+    }
+    this.cookie.set('cart-image-foodapp', JSON.stringify(this.cart_image));
   }
 }

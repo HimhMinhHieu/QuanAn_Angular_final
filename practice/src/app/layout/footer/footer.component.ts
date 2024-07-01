@@ -13,8 +13,12 @@ export class FooterComponent implements OnInit {
   chinhanh!: any;
 
   async ngOnInit(): Promise<void> {
-    let data = await this.API.getASYNC(endpointsAuth.chiNhanh_detail(4));
-    this.chinhanh = data;
+    let data = await this.API.getASYNC_tmp(endpointsAuth.chiNhanh_detail(4));
+    if(data !== null) {
+      this.chinhanh = data;
+      console.log('cn', data)
+    }
+    // console.log('cn', data)
     goongjs.accessToken = 'IaGefUsaQiWrsd3NdHuw3gPAXddl7DSF9EKJVs8E';
     var map = new goongjs.Map({
       container: 'map',

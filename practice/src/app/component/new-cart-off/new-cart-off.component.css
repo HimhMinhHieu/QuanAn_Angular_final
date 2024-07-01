@@ -318,3 +318,32 @@ svg {
   transition: all 0.3s ease-in;
 }
 
+@media only screen and (max-width: 600px) {
+  .container {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+  .card {
+    flex: 0;
+    width: 40%;
+  }
+  .footer-right {
+    position: fixed;
+    bottom: 2%;
+    right: 9%;
+  }
+  .cssbuttons-io-button {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .cssbuttons-io-button > svg {
+    position: fixed;
+    bottom: 2%;
+    left: 10%;
+    margin: 0;
+    width: 5%;
+    height: 5%;
+  }
+}

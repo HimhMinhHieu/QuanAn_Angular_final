@@ -1,18 +1,19 @@
 <!--Footer-->
-<footer class="bg-light text-lg-start">
-  <hr class="m-0" />
+<footer style="width: auto;" class="bg-light text-lg-start">
+  <!-- <hr class="m-0" /> -->
 
   <div class="text-center py-4 align-items-center">
-    <section style="height: 20rem;" class="mb-5 row">
+    <section style="height: auto; width: auto;" class="mb-5">
       <h4 class="mb-5 text-center"><strong>Contact Us:</strong></h4>
-
-      <div class="row col-sm text-start d-flex justify-content-center">
-        <h5>SỐ ĐIỆN THOẠI: 0787940318</h5>
-        <h5>TÊN: TRỊNH MINH HIẾU</h5>
-        <h5>CHI NHÁNH {{chinhanh.id}}</h5>
-        <h5>ĐỊA CHỈ: {{chinhanh.diaChi}}</h5>
+      <div class="container-footer">
+        <div class="row col-sm text-start d-flex justify-content-center">
+          <h5>SỐ ĐIỆN THOẠI: 0787940318</h5>
+          <h5>TÊN: TRỊNH MINH HIẾU</h5>
+          <h5>CHI NHÁNH {{chinhanh.id}}</h5>
+          <h5>ĐỊA CHỈ: {{chinhanh.diaChi}}</h5>
+        </div>
+        <div style="width: fit-content;" class="col-sm" id="map"></div>
       </div>
-      <div style="width: fit-content;" class="col-sm" id="map"></div>
     </section>
     <p>Follow</p>
     <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow">

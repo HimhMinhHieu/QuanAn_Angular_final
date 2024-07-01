@@ -514,3 +514,15 @@ p {
    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
   }
  }
+
+ @media only screen and (max-width: 600px) {
+  .item {
+    width: 90%;
+  }
+  .title-bill {
+    font-size: 25px;
+  }
+  .invoice-footer > div > h5 {
+    font-size: 14px;
+  }
+}

@@ -190,3 +190,20 @@
   /* border-color: black !important; */
   color: black;
 }
+
+@media only screen and (max-width: 600px) {
+  .cssbuttons-io-button {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .cssbuttons-io-button > svg {
+    position: fixed;
+    bottom: 2%;
+    left: 10%;
+    margin: 0;
+    width: 5%;
+    height: 5%;
+  }
+}

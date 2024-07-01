@@ -35,32 +35,47 @@ import { QRCodeSelectComponent } from './component/qrcode-select/qrcode-select.c
 import { QRCodeCheckInComponent } from './component/qrcode-check-in/qrcode-check-in.component';
 import { CanActivateCheckin } from './Config/checkIn';
 import { ThankYouComponent } from './component/thank-you/thank-you.component';
+import { NewMenuComponent } from './component/new-menu/new-menu.component';
+import { NhaBepComponent } from './component/nha-bep/nha-bep.component';
+import { NewCartOnlineComponent } from './component/new-cart-online/new-cart-online.component';
+import { NewLoginComponent } from './component/new-login/new-login.component';
+import { NewRegisterComponent } from './component/new-register/new-register.component';
+import { NewDatBanOnlineComponent } from './component/new-dat-ban-online/new-dat-ban-online.component';
+import { NewFormDatBanComponent } from './component/new-form-dat-ban/new-form-dat-ban.component';
+import { MenuPreviewComponent } from './component/menu-preview/menu-preview.component';
+import { NewUserDetailComponent } from './component/new-user-detail/new-user-detail.component';
+import { NewContactUsComponent } from './component/new-contact-us/new-contact-us.component';
 
 
 const routes: Routes = [
   {path: '', component: MainAppAngularComponent, children: [
     {path: '', redirectTo: '/home', title: "Welcome to Nhoam-Nhoam",pathMatch: 'full' },
     {path: 'home', component: HomeComponent, title: "Welcome to Nhoam-Nhoam"},
-    {path: 'login', component: LoginComponent, title: "Login", canActivate: [CanActivateLogged]},
-    {path: 'register', component: SignupComponent, title: "Sign Up", canActivate: [CanActivateLogged]},
-    {path: 'cart', component: CartComponent, title: "Cart"},
-    {path: 'datban/:idChiNhanh', component: DatbanComponent, canActivate: [AuthguardService]},
-    {path: 'datban/:idChiNhanh/ban/:idBan', component: FormDatBanComponent, canActivate: [AuthguardService]},
+    {path: 'login', component: NewLoginComponent, title: "Login", canActivate: [CanActivateLogged]},
+    {path: 'register', component: NewRegisterComponent, title: "Sign Up", canActivate: [CanActivateLogged]},
+    {path: 'cart', component: NewCartOnlineComponent, title: "Cart", canActivate: [AuthguardService]},
+    {path: 'datban/:idChiNhanh', title:"Table Booking", component: NewDatBanOnlineComponent, canActivate: [AuthguardService]},
+    {path: 'datban/:idChiNhanh/ban/:idBan',title:"Table Booking", component: NewFormDatBanComponent, canActivate: [AuthguardService]},
     {path: 'chonban', component: ChonBanComponent},
 
     {path: 'cartoff', component: CartOffComponent},
     {path: 'introduce', component: IntroduceComponent, title: "Introduce"},
-    {path: 'menu', component: MenuComponent, title: "Menu"},
+    {path: 'menu', component: NewMenuComponent, title: "Menu"},
     {path: 'menu/:idFood', component: FoodDetailComponent},
-    {path: 'contact', component: ContactComponent, title: "Contact"},
+    {path: 'contact', component: NewContactUsComponent, title: "Contact"},
     {path: 'forgot', component: ForgotPasswordComponent, title: "Forgot Password"},
     {path: 'changepw', component: ChangePasswordComponent, title: "Change Password"},
-    {path: 'detail', component: ThongTinCaNhanComponent, title: "Information"},
+    {path: 'detail', component: NewUserDetailComponent, title: "Information"},
     {path: ':storeId/comments', component: DanhGiaComponent},
     {path: 'chatbot', component: ChatbotComponent},
     {path: 'owner', component: OwnerComponent, title: "Owner", canActivate: [CanActivateOwner]},
     {path: 'chat', component: ChatComponent, title: "Chat"},
-
+    {path: 'menupreview', component: MenuPreviewComponent, title:'Menu'},
+    {path: 'test2', component: NewUserDetailComponent, title:"Thông tin cá nhân"}
+    // {path: 'test3', component: NewLoginComponent, title: 'Login'},
+    // {path: 'test4', component: NewRegisterComponent, title: 'Register'},
+    // {path: 'test5', component: NewDatBanOnlineComponent, title: 'Table Booking'},
+    // {path: 'test6', component: NewFormDatBanComponent, title: 'Table Booking'},
   ]},
   {path: 'ban/:idBan/QRCode', component: QRCodeSelectComponent, data: {animation: 'QRCode'}},
   {path: 'ban/:idBan/CheckIn', component: QRCodeCheckInComponent, data: {animation: 'CheckIn'}},
@@ -71,6 +86,8 @@ const routes: Routes = [
   {path: 'ban/:idBan/offer/offer-detail', component: DetailOfferComponent, data: {animation: 'OfferDetail'}},
   {path: 'ban/:idBan/payment', component: PaymentComponent, title: "Bill", data: {animation: "Billing"}},
   {path: 'thankyou', component: ThankYouComponent, title: 'Thank You', data: {animation: 'ThankYou'}},
+  {path: 'nhabep', component: NhaBepComponent},
+  // {path: 'test2', component: NewCartOnlineComponent},
   {path: '**', component: Page404Component, title: "404 Error"},
 
 ];

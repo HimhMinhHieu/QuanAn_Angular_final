@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  /* margin-right: 10px; */
+}
+
+/* .left-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+} */
+
+.inside-container {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  background-image: url("https://images.squarespace-cdn.com/content/v1/60d4e7b0b324fd5ff66b2b4b/e1d0aa70-669f-4c1b-a8d1-eec876c436f2/80509605+black+bar.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.img-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  /* background-color: #EEE; */
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+}
+
+.right-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.title,
+.content,
+.footer {
+  border: 1px solid black;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  height: 30%;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  height: 50%;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  height: 20%;
+}
+
+
+img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.showanim {
+  animation: slide 3s;
+}
+
+
+.card {
+  margin-top: 13%;
+  width: 70%;
+  height: 70%;
+  aspect-ratio: 3/3;
+  border: 4px solid;
+  background-color: #FFF;
+  /* position: relative; */
+  transition: .15s ease;
+  cursor: pointer;
+  padding: 5% 5% 15% 5%;
+  z-index: 99;
+  transition: all .3s ease-in-out;
+
+  /* width: 25%; */
+  /* transform: rotate(10deg) !important; */
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 4px solid;
+    background-color: #FFF;
+    transform-origin: center center;
+    z-index: -1;
+    transition: .15s ease;
+    top: 0;
+    left: 0;
+  }
+
+  &:after {
+    transform: rotate(10deg) !important;
+  }
+
+  &:before {
+    transform: rotate(-10deg) !important;
+  }
+}
+
+.image {
+  width: 100%;
+  border: 4px solid;
+  background-color: #EEE;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  transform: rotate(10deg) !important;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+.quote-container {
+  position: relative;
+  /* width: 10%; */
+  top: 97px;
+  right: 0;
+}
+
+.note {
+  color: #333;
+  position: relative;
+  /* width: 400px; */
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Satisfy;
+  font-size: 30px;
+  box-shadow:
+    inset 0 -40px 40px rgba(0, 0, 0, 0.2),
+    inset 0 25px 10px rgba(0, 0, 0, 0.2),
+    0 5px 6px 5px rgba(0, 0, 0, 0.2);
+  /* border-radius: 0 0 0 30px/45px; */
+  line-height: 1.7em;
+  mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+
+.note .author {
+  display: block;
+  margin: 40px 0 0 0;
+  text-align: right;
+}
+
+.yellow {
+  background: #eae672;
+  /* -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(-1deg); */
+}
+
+.quote-container-img {
+  position: absolute;
+  /* width: 10%; */
+  top: 100%;
+  right: 0;
+  transform: rotate(11deg) !important;
+}
+
+.note-img {
+  color: #333;
+  position: relative;
+  /* width: 400px; */
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Satisfy;
+  font-size: 30px;
+  box-shadow:
+    inset 0 -40px 40px rgba(0, 0, 0, 0.2),
+    inset 0 25px 10px rgba(0, 0, 0, 0.2),
+    0 5px 6px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 0 30px/45px;
+  line-height: 1.7em;
+  mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+.yellow-img {
+  background: #eae672;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(-1deg);
+}
+
+.yellow-img:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 25px;
+  background: #ffa;
+  box-shadow:
+    3px -2px 10px rgba(0, 0, 0, 0.2),
+    inset 15px -15px 15px rgba(0, 0, 0, 0.3);
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: skewX(25deg);
+}
+
+
+.pin {
+  background-color: #aaa;
+  display: block;
+  height: 32px;
+  width: 2px;
+  position: absolute;
+  /* left: 50%; */
+  right: 10px;
+  top: -16px;
+  z-index: 1;
+}
+
+.pin:after {
+  background-color: #A31;
+  /* background-image: radial-gradient(25% 25%, circle, hsla(0,0%,100%,.3), hsla(0,0%,0%,.3)); */
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1), inset 3px 3px 3px hsla(0, 0%, 100%, .2), inset -3px -3px 3px hsla(0, 0%, 0%, .2), 23px 20px 3px hsla(0, 0%, 0%, .15);
+  content: '';
+  height: 12px;
+  left: -5px;
+  position: absolute;
+  top: -10px;
+  width: 12px;
+}
+
+.pin:before {
+  background-color: hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 0 .25em hsla(0, 0%, 0%, .1);
+  content: '';
+
+  height: 24px;
+  width: 2px;
+  left: 0;
+  position: absolute;
+  top: 8px;
+
+  transform: rotate(57.5deg);
+  -moz-transform: rotate(57.5deg);
+  -webkit-transform: rotate(57.5deg);
+  -o-transform: rotate(57.5deg);
+  -ms-transform: rotate(57.5deg);
+
+  transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -o-transform-origin: 50% 100%;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+
+.content-inside {
+  .right-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+  }
+}
+
+.invoice-table {
+  width: 100%;
+}
+
+.invoice-table thead tr td {
+  font-size: 50px;
+  letter-spacing: 1px;
+  color: white;
+  padding: 8px 0;
+}
+
+.invoice-table thead tr td:nth-last-child(1),
+.row-data td:nth-last-child(1),
+.calc-row td:nth-last-child(1) {
+  text-align: left;
+}
+
+.invoice-table thead tr td:nth-last-child(2),
+.row-data td:nth-last-child(2),
+.calc-row td:nth-last-child(2) {
+  text-align: center;
+}
+
+.invoice-table thead tr td:nth-last-child(3),
+.row-data td:nth-last-child(3),
+.calc-row td:nth-last-child(3) {
+  text-align: center;
+}
+
+.invoice-table tbody tr td {
+  padding: 8px 0;
+  letter-spacing: 0;
+}
+
+h3 {
+  color: #F0F8FF
+}
+
+.row-data td {
+  cursor: pointer;
+}
+
+.active {
+  color: yellow !important;
+}
+
+.pagination-spreads {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  color: #F0F8FF;
+  text-align: center;
+}
+
+.pagination-spreads::ng-deep ul {
+  margin-top: 10px;
+  /* flex-basis: 1; */
+  border-radius: 10rem;
+  margin-left: 22.8%;
+  width: 100%;
+  /* border: solid 1px black; */
+}
+
+
+.pagination-spreads::ng-deep li {
+  background-color: rgba(255, 215, 0);
+  margin: 2px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  /* border: solid 0px #fff; */
+  border-radius: 10rem;
+  /* transition: all 1s ease; */
+}
+
+/* I hide the previus when I am at number 1. with ::before */
+.pagination-spreads::ng-deep ul>li.disabled {
+  display: none !important;
+}
+
+/* deactivated numbers will be grayed out */
+.pagination-spreads::ng-deep ul>li:not(.active)>a {
+  /* border:  0px #fff; */
+  border-radius: 10rem;
+  background-color: #fff !important;
+  /* border-color: black !important; */
+  color: black;
+}
+
+.fa-cart-shopping:hover {
+  color: green;
+}
+
+.fa-cart-shopping:active {
+  /* box-shadow: 0 5px #666; */
+  transform: translateY(4px);
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-last {
+  0% {
+    transform: translateX(0%);
+    z-index: 2;
+  }
+
+  16.66% {
+    transform: translateX(120%);
+    z-index: 2;
+  }
+
+  16.67% {
+    transform: translateX(120%);
+    z-index: 1;
+  }
+
+  33.34% {
+    transform: translateX(0%);
+    z-index: 1;
+  }
+
+  83.33% {
+    transform: translateX(0%);
+    z-index: 1;
+  }
+
+  83.34% {
+    transform: translateX(0%);
+    z-index: 2;
+  }
+
+  100% {
+    transform: translateX(0%);
+    z-index: 2;
+  }
+}

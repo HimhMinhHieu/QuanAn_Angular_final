@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   itemPerPage: number = 4;
   totalProduct!: any;
   private carts: any = {};
+  cart_image: any = {};
 
   quantity: number = 1;
   hFood: boolean = false;
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit {
   cont: any;
   huser!: any;
   loadingComment: any = true;
+  chiNhanh:any = 4;
 
   constructor(
     private apis: ApiService,
@@ -65,6 +67,9 @@ export class HomeComponent implements OnInit {
     if (this.cookie.check('cart-foodapp') === true) {
       this.carts = JSON.parse(this.cookie.get('cart-foodapp'));
     }
+    if (this.cookie.check('cart-image-foodapp') === true) {
+      this.cart_image = JSON.parse(this.cookie.get('cart-image-foodapp'));
+    }
 
     // this.apis.get(endpointsAuth.comments(4)).subscribe((data) => {
     //   this.comment = data;
@@ -72,7 +77,7 @@ export class HomeComponent implements OnInit {
     // });
 
     this.huser = this.cookie.check('user');
-    console.log(this.user);
+    // console.log(this.user);
   }
 
   //comments
@@ -147,8 +152,6 @@ export class HomeComponent implements OnInit {
   //addCart
   addCart(product: any) {
     this.store.dispatch(increment({ payload: this.count }));
-    console.log(product);
-    console.log(product.id);
     if (product.id in this.carts) {
       this.carts[product.id].soLuong += 1;
     } else {
@@ -161,6 +164,21 @@ export class HomeComponent implements OnInit {
       };
     }
     this.cookie.set('cart-foodapp', JSON.stringify(this.carts));
+
+    if (product.id in this.cart_image) {
+      this.cart_image[product.id].soLuong += 1;
+    } else {
+      this.cart_image[product.id] = {
+        idNguoiDung: this.user.id,
+        idThucAn: product.id,
+        name: product.name,
+        soLuong: 1,
+        donGia: product.price,
+        image: product.image,
+        cate: product.idLoai.name
+      };
+    }
+    this.cookie.set('cart-image-foodapp', JSON.stringify(this.cart_image));
   }
 
   addCartDetail(product: any) {
@@ -182,6 +200,23 @@ export class HomeComponent implements OnInit {
       }
       this.cookie.set('cart-foodapp', JSON.stringify(this.carts));
     }
+
+    if (this.cart_image !== null) {
+      if (product.id in this.cart_image) {
+        this.cart_image[product.id].soLuong += this.quantity;
+      } else {
+        this.cart_image[product.id] = {
+          idNguoiDung: this.user.id,
+          idThucAn: product.id,
+          name: product.name,
+          soLuong: this.quantity,
+          donGia: product.price,
+          image: product.image,
+          cate: product.idLoai.name
+        };
+      }
+      this.cookie.set('cart-image-foodapp', JSON.stringify(this.cart_image));
+    }
   }
 
   async getFoodComment(idThucAn: any) {
@@ -195,6 +230,10 @@ export class HomeComponent implements OnInit {
     if (dataCommentFood === null) {
       this.loadingComment = true;
     }
+  }
+
+  gotoDatBan() {
+    this.router.navigate(['/datban', this.chiNhanh])
   }
   // detailFood(product: any)
   // {
@@ -213,4 +252,5 @@ export class HomeComponent implements OnInit {
   //   this.cookie.set('cart-foodapp', JSON.stringify(this.carts));
   //   this.router.navigate(['/menu', product.id])
   // }
+
 }

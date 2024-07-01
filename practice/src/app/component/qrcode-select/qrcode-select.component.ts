@@ -35,7 +35,7 @@ export class QRCodeSelectComponent implements OnInit {
   ngOnInit(): void {
     let idBan = parseInt(this.route.snapshot.paramMap.get('idBan') as any);
     this.idBan = idBan;
-    this.url = `http://localhost:4200/ban/${idBan}/CheckIn`;
+    this.url = `http://localhost:4200/ban/${idBan}/`;
     if (this.cookie.check('access')) {
       this.access = this.cookie.get('access');
     }

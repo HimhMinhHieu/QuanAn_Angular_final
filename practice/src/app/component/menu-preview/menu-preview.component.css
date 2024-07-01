@@ -1,0 +1,132 @@
+
+
+.container {
+  /* margin: 0; */
+  /* max-width: 1903px; */
+  /* height: 100vh; */
+  /* margin-top: 10%;
+  margin-bottom: 10%; */
+  max-width: 100vw;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+.top > img {
+  width: 20%;
+  height: auto;
+}
+
+.bot > img {
+  width: 20%;
+  height: auto;
+}
+
+.inside-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  row-gap: 5rem;
+}
+
+.top {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+
+.bot {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+
+.mid {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  /* gap: 3rem; */
+}
+
+.mid-right {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  width: 50%;
+  height: 100%;
+  padding-right: 2rem;
+}
+
+.food-cuisine {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  width: 100%;
+}
+
+.mid-left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
+
+.mid-left > img {
+  width: 50%;
+  height: 50%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Playwrite+MX:wght@100..400&display=swap');
+.name-food {
+  font-family: "Playwrite MX", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 200%;
+  color: white;
+}
+
+.price {
+  font-family: "Fleur De Leah", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 250%;
+  color: white;
+}

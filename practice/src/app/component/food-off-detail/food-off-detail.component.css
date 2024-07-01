@@ -305,3 +305,70 @@ svg {
   bottom: 4%;
   column-gap: 1em;
 }
+
+@media only screen and (max-width: 600px) {
+  .container {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+  .card{
+    position: static;
+    width: 100%;
+    height: 100%;
+    flex: 0;
+  }
+  .footer-right {
+    position: fixed;
+    bottom: 2%;
+    right: 9%;
+  }
+  .footer-right > button > span {
+    display: none;
+  }
+
+  .cssbuttons-io-button {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .cssbuttons-io-button > svg {
+    position: fixed;
+    bottom: 2%;
+    left: 10%;
+    margin: 0;
+    width: 5%;
+    height: 5%;
+  }
+  .detail-food > h1 {
+    font-size: 100%;
+  }
+
+  .detail-food > p {
+    font-size: 50%;
+  }
+
+  .footer-card {
+    position: static;
+  }
+  .footer-next {
+    position: static;
+  }
+  .footer-next > p {
+    font-size: 100%;
+  }
+  .footer-cart {
+    width: 100%;
+    position: relative;
+    left: 60%;
+    bottom: 0px;
+  }
+  .card-button {
+    border-radius: 50%;
+    width: 30%;
+    height: 30%;
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+  }
+}

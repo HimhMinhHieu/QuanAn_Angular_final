@@ -4,7 +4,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { lastValueFrom } from 'rxjs';
 
 const SERVER_CONTEXT = '/quanan';
-const SERVER = 'http://localhost:8080';
+// const SERVER = 'http://localhost:8080';
+
+const SERVER = 'https://onlyspringbootquanan-production.up.railway.app';
 
 export const endpointsAuth = {
   currentUser: `${SERVER}${SERVER_CONTEXT}/api/current-user/`,

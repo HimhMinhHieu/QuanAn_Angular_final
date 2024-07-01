@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="inside-container">
+    <div class="img-container">
+      <div class="card">
+        <div class="image">
+          <img [ngClass]="a ? 'showanim' : '' "  src="{{ addImage }}" alt="{{ addName }}" />
+        </div>
+        <div class="quote-container-img">
+          <blockquote *ngIf="itemCore === null" class="note-img yellow-img">?? VND</blockquote>
+          <blockquote *ngIf="itemCore !== null" class="note-img yellow-img">{{itemCore.price}} VND</blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-container">
+      <div class="quote-container">
+        <blockquote class="note yellow">{{ category }}</blockquote>
+      </div>
+      <div class="right-content">
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              (click)="clickOnItem(f)" (mouseleave)="leaveitem()"
+              *ngFor="
+                let f of foods | paginate : { itemsPerPage: 6, currentPage: p }
+              "
+              class="row-data"
+            >
+              <td>
+                <h3 [ngClass]="f.id === idItem ? 'active' : ''">
+                  {{ f.name }}
+                </h3>
+              </td>
+              <td id="price">
+                <h3 [ngClass]="f.id === idItem ? 'active' : ''">
+                  {{ f.price }} VND
+                </h3>
+              </td>
+              <td (click)="addCart(f)" id="icon">
+                <h3  [ngClass]="f.id === idItem ? 'active' : ''">
+                  <i  class="fa-solid fa-cart-shopping"></i>
+                </h3>
+              </td>
+            </tr>
+            <pagination-controls
+              class="pagination-spreads"
+              (pageChange)="p = $event"
+            ></pagination-controls>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

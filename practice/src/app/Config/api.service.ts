@@ -9,9 +9,12 @@ import { catchError, lastValueFrom, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 
 const SERVER_CONTEXT = '/quanan';
-const SERVER = 'http://localhost:8080';
+// const SERVER = 'http://localhost:8080';
 
-const SERVER_SENTIMENT = 'http://127.0.0.1:5001';
+const SERVER = 'https://onlyspringbootquanan-production.up.railway.app';
+
+// const SERVER_SENTIMENT = 'http://127.0.0.1:5001';
+const SERVER_SENTIMENT = 'https://pythonproj-sen.onrender.com/'
 
 export const endpoints = {
   foods: `${SERVER}${SERVER_CONTEXT}/api/food/`,
@@ -80,6 +83,20 @@ export class ApiService {
   async getASYNC(endpoint: string) {
     try {
       return await lastValueFrom(this.http.get(endpoint));
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  async getASYNC_tmp(endpoint: string) {
+    try {
+      return await lastValueFrom(this.http.get(endpoint, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": "*"
+        }),
+      }));
     } catch (e) {
       console.log(e);
       return null;
